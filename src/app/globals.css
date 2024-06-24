@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -24,6 +25,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: "Playwrite NG Modern", cursive;
 }
 
 @layer utilities {
@@ -66,4 +68,8 @@ textarea {
 .underline:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+
+.btn-primary {
+  @apply  hover:bg-secondary transition duration-300 border border-secondary text-main py-2 px-6;
 }

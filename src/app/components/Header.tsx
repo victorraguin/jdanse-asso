@@ -3,9 +3,9 @@ import React from "react";
 
 function Header() {
   return (
-    <header className="text-main p-4">
+    <header className="text-main">
       <div className="container mx-auto flex justify-between items-center">
-        <Image src="/static/Logo.png" alt="Logo" width={80} height={80} />
+        <Image src="/static/Logo.png" alt="Logo" width={80} height={80} className="z-10" />
         <nav>
           <ul className="flex space-x-8 text-lg">
             <li>
