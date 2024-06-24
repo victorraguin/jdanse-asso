@@ -31,3 +31,39 @@ body {
     text-wrap: balance;
   }
 }
+
+input {
+  @apply border-2 border-gray-300 rounded-md text-black p-1;
+}
+textarea {
+  @apply border-2 border-gray-300 rounded-md text-black p-1;
+}
+
+.btn {
+  @apply border-white hover:border-yellow-400 border py-2 px-4 rounded-md;
+}
+
+/* Underline CSS Animation */
+.underline {
+  position: relative;
+  text-decoration: none;
+}
+
+.underline::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #ffb400;
+  bottom: -4px;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.underline:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}
