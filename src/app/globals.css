@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Work+Sans%3A400%7CDM+Serif+Display%3A400&display=fallback&ver=4.6.14");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -25,7 +25,6 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-    font-family: "Playwrite NG Modern", cursive;
 }
 
 @layer utilities {
@@ -71,5 +70,50 @@ textarea {
 }
 
 .btn-primary {
-  @apply  hover:bg-secondary transition duration-300 border border-secondary text-main py-2 px-6;
+  @apply hover:bg-secondary transition duration-300 border border-secondary text-main py-2 px-6;
+}
+
+#section05 a {
+  padding-top: 70px;
+}
+#section05 a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin-left: -12px;
+  border-left: 3px solid #E1AD01;
+  border-bottom: 3px solid #E1AD01;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb05 1.5s infinite;
+  animation: sdb05 1.5s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb05 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb05 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
 }

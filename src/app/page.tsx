@@ -1,4 +1,5 @@
 import Hero from "./components/Hero";
+import WelcomeMessage from "./components/WelcomeMessage";
 import { Banner } from "./types/global";
 
 export default async function Home() {
@@ -13,7 +14,7 @@ export default async function Home() {
   const banner = await getBanner();
 
   return (
-    <main className="flex min-h-screen flex-col container px-24">
+    <main className="flex min-h-screen flex-col px-24">
       {banner && (
         <div className="text-secondary text-center py-4 rounded relative w-full z-20 bg-black/90">
           <span className="block sm:inline">{banner.message}</span>
@@ -25,7 +26,7 @@ export default async function Home() {
         </div>
       )}
       <Hero />
-      {/* <WelcomeMessage /> */}
+      <WelcomeMessage />
       {/* <Danses /> */}
       {/* <ImageGallery /> */}
       {/* <Contact /> */}
