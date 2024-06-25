@@ -1,3 +1,4 @@
+import Danses from "./components/Danses";
 import Hero from "./components/Hero";
 import WelcomeMessage from "./components/WelcomeMessage";
 import { Banner } from "./types/global";
@@ -27,7 +28,7 @@ export default async function Home() {
       )}
       <Hero />
       <WelcomeMessage />
-      {/* <Danses /> */}
+      <Danses />
       {/* <ImageGallery /> */}
       {/* <Contact /> */}
       {/* <Footer /> */}
