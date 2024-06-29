@@ -3,10 +3,13 @@ import mongoose, { Schema, Document, Model } from 'mongoose';
 interface IEvent extends Document {
   title: string;
   date: Date;
-  time: string;
+  startTime: string;
+  endTime: string;
   location: string;
   link: string;
   imageUrl: string;
+  description?: string;
+  isFavorite?: boolean;
 }
 
 const EventSchema: Schema = new Schema({
@@ -18,9 +21,13 @@ const EventSchema: Schema = new Schema({
     type: Date,
     required: [true, 'Please provide a date for this event.'],
   },
-  time: {
+  startTime: {
     type: String,
-    required: [true, 'Please provide a time for this event.'],
+    required: [true, 'Please provide a start time for this event.'],
+  },
+  endTime: {
+    type: String,
+    required: [true, 'Please provide an end time for this event.'],
   },
   location: {
     type: String,
@@ -33,6 +40,15 @@ const EventSchema: Schema = new Schema({
   imageUrl: {
     type: String,
     required: false,
+  },
+  description: {
+    type: String,
+    required: false,
+  },
+  isFavorite: {
+    type: Boolean,
+    required: false,
+    default: false,
   },
 });
 

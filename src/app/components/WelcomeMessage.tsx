@@ -2,12 +2,11 @@ import Image from "next/image";
 function WelcomeMessage() {
   return (
     <>
-      <section className="relative flex flex-col max-w-6xl space-y-4 px-4 self-center items-center justify-center border rounded-xl border-secondary py-8 text-center">
-        <p className="text-xl">
-          Bonjour! <br /> Bienvenue sur l’Association J’Danse, les inscriptions
-          vont s’ouvrir pour la saison 2024, ne ratez pas l’occasion! Baby
-          Danse, Modern Jazz ou Classique seront les cours proposés! A bientôt!
-          (texte à définir)
+      <section className="relative border-secondary border text-main flex flex-col max-w-6xl space-y-4 px-4 self-center items-center justify-center rounded-xl py-8 text-center">
+        <p className="text-lg">
+          Bienvenue sur l’Association J’Danse, les inscriptions vont s’ouvrir
+          pour la saison 2024, ne ratez pas l’occasion! Baby Danse, Modern Jazz
+          ou Classique seront les cours proposés! A bientôt! (texte à définir)
         </p>
         <div className="flex flex-row items-center justify-around">
           <Image
@@ -19,16 +18,11 @@ function WelcomeMessage() {
           />
           <div className="flex flex-col items-center justify-center">
             <h2 className="text-lg font-bold text-secondary">Johanna Barbe</h2>
-            <h3 className="text-md text-main">Professeure de danse</h3>
+            <h3 className="text-md ">Professeure de danse</h3>
           </div>
         </div>
-        <section id="section05" className="absolute z-10 text-main -top-60">
-          <a>
-            <span></span>
-          </a>
-        </section>
       </section>
-      <div className="flex flex-row justify-around my-12">
+      <div className="flex flex-row justify-around my-20">
         <div className="flex flex-col items-center justify-center">
           <Image
             src="/icons/degree.png"

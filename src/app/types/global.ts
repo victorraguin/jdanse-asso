@@ -14,21 +14,19 @@ export interface Banner {
   buttonLink?: string;
 }
 
-export interface GalleryImage {
-  _id: string;
+export interface GalleryImageTypes {
+  _id: number;
   imageUrl: string;
 }
 
 export interface Event {
   _id: string;
   title: string;
-  date: string;
+  startTime: string;
+  endTime: string;
+  isFavorite?: boolean;
   time: string;
   location: string;
   link: string;
   imageUrl: string;
-}
-
-export interface EventsListProps {
-  events: Event[];
 }

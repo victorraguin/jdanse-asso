@@ -2,25 +2,33 @@
 import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
 
+interface EventData {
+  id?: string;
+  title: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  location: string;
+  link: string;
+  imageUrl?: string;
+  description?: string;
+  isFavorite?: boolean;
+}
+
 interface EventFormProps {
-  onSubmit: (event: any) => Promise<void>;
-  initialData?: {
-    id?: string;
-    title: string;
-    date: string;
-    time: string;
-    location: string;
-    link: string;
-    imageUrl?: string;
-  };
+  onSubmit: (event: EventData) => Promise<void>;
+  initialData?: EventData;
 }
 
 export default function EventForm({ onSubmit, initialData }: EventFormProps) {
   const [title, setTitle] = useState(initialData?.title || "");
   const [date, setDate] = useState(initialData?.date || "");
-  const [time, setTime] = useState(initialData?.time || "");
+  const [startTime, setStartTime] = useState(initialData?.startTime || "");
+  const [endTime, setEndTime] = useState(initialData?.endTime || "");
   const [location, setLocation] = useState(initialData?.location || "");
   const [link, setLink] = useState(initialData?.link || "");
+  const [description, setDescription] = useState(initialData?.description || "");
+  const [isFavorite, setIsFavorite] = useState(initialData?.isFavorite || false);
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState(initialData?.imageUrl || "");
   const [loading, setLoading] = useState(false);
@@ -76,75 +84,122 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
       }
     }
 
-    const newEvent = { title, date, time, location, link, imageUrl };
+    const newEvent: EventData = { title, date, startTime, endTime, location, link, imageUrl, description, isFavorite };
     await onSubmit(newEvent);
     setLoading(false);
   };
 
   return (
-    <div className="flex flex-row w-full justify-center space-x-10">
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-        <h4 className="text-xl font-bold">Nom de l'événement</h4>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Titre"
-          required
-          className="input"
-        />
-        <h4 className="text-xl font-bold">Date</h4>
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          required
-          className="input"
-        />
-        <h4 className="text-xl font-bold">Heure</h4>
-        <input
-          type="time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          required
-          className="input"
-        />
-        <h4 className="text-xl font-bold">Lieu</h4>
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Lieu"
-          required
-          className="input"
-        />
-        <h4 className="text-xl font-bold">Lien de l'évènement</h4>
-        <input
-          type="url"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
-          placeholder="Lien"
-          required
-          className="input"
-        />
-        <h4 className="text-xl font-bold">Image de l'évènement</h4>
-        <input type="file" onChange={handleImageChange} className="input" />
-        <button
-          type="submit"
-          className="btn"
-          disabled={loading}
-          onClick={handleSubmit}>
-          {loading ? "Enregistrement en cours..." : "Enregistrer"}
-        </button>
+    <div className="flex flex-col items-center w-full">
+      <form onSubmit={handleSubmit} className="grid grid-cols-3 gap-6 w-full max-w-4xl">
+        <div className="flex flex-col">
+          <label className="text-sm font-bold">Nom de l'événement</label>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Titre"
+            required
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-sm font-bold">Date</label>
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-sm font-bold">Heure de début</label>
+          <input
+            type="time"
+            value={startTime}
+            onChange={(e) => setStartTime(e.target.value)}
+            required
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-sm font-bold">Heure de fin</label>
+          <input
+            type="time"
+            value={endTime}
+            onChange={(e) => setEndTime(e.target.value)}
+            required
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-sm font-bold">Lieu</label>
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Lieu"
+            required
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label className="text-sm font-bold">Lien de l'évènement</label>
+          <input
+            type="url"
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
+            placeholder="Lien"
+            required
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col col-span-3">
+          <label className="text-sm font-bold">Description</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Description de l'évènement"
+            className="input"
+          />
+        </div>
+        <div className="flex flex-col col-span-3">
+          <label className="text-sm font-bold">Favori</label>
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              checked={isFavorite}
+              onChange={(e) => setIsFavorite(e.target.checked)}
+              className="input"
+            />
+            <span>Ajouter aux favoris</span>
+          </label>
+        </div>
+        <div className="flex flex-col col-span-3">
+          <label className="text-sm font-bold">Image de l'évènement</label>
+          <input type="file" onChange={handleImageChange} className="input" />
+        </div>
+        <div className="flex flex-col col-span-3">
+          <button
+            type="submit"
+            className="btn mt-4"
+            disabled={loading}
+          >
+            {loading ? "Enregistrement en cours..." : "Enregistrer"}
+          </button>
+        </div>
       </form>
       {imageUrl && (
-        <Image
-          src={imageUrl}
-          alt="Image de l'évènement"
-          className="w-1/2 rounded-lg"
-          width={500}
-          height={500}
-        />
+        <div className="mt-4">
+          <Image
+            src={imageUrl}
+            alt="Image de l'évènement"
+            className="rounded-lg"
+            width={200}
+            height={200}
+          />
+        </div>
       )}
     </div>
   );

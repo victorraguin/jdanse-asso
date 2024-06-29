@@ -69,8 +69,40 @@ textarea {
   transform: scaleX(1);
 }
 
+.underlineTitle {
+  position: relative;
+  text-decoration: none;
+}
+
+.underlineTitle::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #ffb400, #000000, #000000, #ffb400);
+  background-size: 400% 100%;
+  bottom: -5px;
+  left: 0;
+  transform-origin: left;
+  transform: scaleY(0);
+  animation: underlineAnimation 3s ease-in-out infinite;
+}
+
+@keyframes underlineAnimation {
+  0%,
+  100% {
+    transform: scaleY(1);
+    background-position: 0% 50%;
+  }
+  50% {
+    transform: scaleY(0);
+    background-position: 100% 50%;
+  }
+}
+
 .btn-primary {
-  @apply hover:bg-secondary transition duration-300 border border-secondary text-main py-2 px-6;
+  @apply hover:bg-secondary transition duration-300 border border-secondary text-main py-1 px-4 rounded;
 }
 
 #section05 a {
@@ -83,8 +115,8 @@ textarea {
   width: 28px;
   height: 28px;
   margin-left: -12px;
-  border-left: 3px solid #E1AD01;
-  border-bottom: 3px solid #E1AD01;
+  border-left: 3px solid #e1ad01;
+  border-bottom: 3px solid #e1ad01;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   -webkit-animation: sdb05 1.5s infinite;
@@ -114,6 +146,58 @@ textarea {
   }
   100% {
     transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+
+.file-input {
+  @apply border border-gray-300 p-2 rounded-md;
+}
+
+.loading {
+  @apply bg-gray-800 cursor-not-allowed;
+}
+
+/* Custom styles */
+.relative {
+  position: relative;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+.transition-opacity {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.transition-transform {
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Typewriter effect */
+#typewriter {
+  display: inline-block;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+strong {
+  color: #ffb400;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
     opacity: 0;
   }
 }

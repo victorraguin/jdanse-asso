@@ -32,7 +32,6 @@ export default function SignIn() {
 
   return (
     <div className="container mx-auto p-4 flex flex-col items-center space-y-4">
-      <h1 className="text-2xl font-bold mb-4">Administration</h1>
       {error && <p className="text-red-500 mb-4">{error}</p>}
       <form
         method="post"
@@ -42,7 +41,7 @@ export default function SignIn() {
           <input name="csrfToken" type="hidden" value={csrfToken ?? ""} />
           <p>Email</p>
           <label>
-            <input name="email" type="email" required className="px-1"/>
+            <input name="email" type="email" required className="px-1" />
           </label>
           <p>Password</p>
           <label>
@@ -50,7 +49,7 @@ export default function SignIn() {
           </label>
         </div>
         <button type="submit" className="btn">
-          Sign in
+          Se connecter
         </button>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import EventsList from "@/components/EventList";
+import EventsList from "@/components/Events/EventList";
 import { Event, Banner, GalleryImage } from "@/types/global";
 
 async function getEvents() {
