@@ -5,12 +5,12 @@ import { useEffect, useState } from "react";
 import EventForm from "@/components/EventForm";
 import RequireAuth from "@/components/RequireAuth";
 import { useNotification } from "@/context/NotificationContext";
-import { Event } from "@/types/global";
+import { EventTypes } from "@/types/global";
 
 export default function EditEvent() {
   const { id } = useParams();
   const router = useRouter();
-  const [event, setEvent] = useState<Event>();
+  const [event, setEvent] = useState<EventTypes>();
 
   const { showNotification } = useNotification();
 
@@ -23,7 +23,7 @@ export default function EditEvent() {
     fetchEvent();
   }, [id]);
 
-  const updateEvent = async (updatedEvent: Event) => {
+  const updateEvent = async (updatedEvent: EventTypes): Promise<void> => {
     const response = await fetch(`/api/events/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -31,7 +31,8 @@ export default function EditEvent() {
     });
 
     if (response.ok) {
-      router.push("/events");
+      router.push("/admin");
+      router.refresh();
       showNotification("success", "L'événement a été modifié !");
     } else {
       showNotification("error", "Une erreur est survenue");

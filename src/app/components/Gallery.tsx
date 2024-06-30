@@ -7,15 +7,11 @@ import ImageMosaic from "@/components/ImageList";
 import { useNotification } from "@/context/NotificationContext";
 import { GalleryImageTypes } from "@/types/global";
 
-interface GalleryProps {
-  images: GalleryImageTypes[];
-}
-
-export default function Gallery({ images }: GalleryProps) {
+export default function Gallery() {
   const router = useRouter();
   const { showNotification } = useNotification();
   const [isLoading, setIsLoading] = useState(false);
-  const [imageList, setImageList] = useState<GalleryImageTypes[]>(images);
+  const [imageList, setImageList] = useState<GalleryImageTypes[]>([]);
   const [imagesToUpload, setImagesToUpload] = useState<File[]>([]);
   const [previews, setPreviews] = useState<string[]>([]);
 
@@ -65,6 +61,20 @@ export default function Gallery({ images }: GalleryProps) {
     }
   };
 
+  const getImageList = async () => {
+    const response = await fetch(`/api/gallery`);
+    const data = await response.json();
+    return data as GalleryImageTypes[];
+  };
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const images = await getImageList();
+      setImageList(images);
+    };
+    fetchImages();
+  }, []);
+
   return (
     <RequireAuth>
       <div className="container mx-auto p-4">
@@ -79,7 +89,7 @@ export default function Gallery({ images }: GalleryProps) {
           previews={previews}
           setPreviews={setPreviews}
         />
-        <ImageMosaic initialImages={imageList} />
+        <ImageMosaic />
       </div>
     </RequireAuth>
   );

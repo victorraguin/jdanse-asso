@@ -1,23 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
-
-interface EventData {
-  id?: string;
-  title: string;
-  date: string;
-  startTime: string;
-  endTime: string;
-  location: string;
-  link: string;
-  imageUrl?: string;
-  description?: string;
-  isFavorite?: boolean;
-}
+import { EventTypes } from "@/types/global";
 
 interface EventFormProps {
-  onSubmit: (event: EventData) => Promise<void>;
-  initialData?: EventData;
+  onSubmit: (event: EventTypes) => Promise<void>;
+  initialData?: EventTypes;
 }
 
 export default function EventForm({ onSubmit, initialData }: EventFormProps) {
@@ -84,7 +72,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
       }
     }
 
-    const newEvent: EventData = { title, date, startTime, endTime, location, link, imageUrl, description, isFavorite };
+    const newEvent: EventTypes = { title, date, startTime, endTime, location, link, imageUrl, description, isFavorite };
     await onSubmit(newEvent);
     setLoading(false);
   };

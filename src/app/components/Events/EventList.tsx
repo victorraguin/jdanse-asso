@@ -3,11 +3,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Event } from "@/types/global";
+import { EventTypes } from "@/types/global";
 import { formatDate } from "@/utils/date";
 
 interface EventsListProps {
-  events: Event[];
+  events: EventTypes[];
   isAdmin: boolean;
   isMainPage: boolean;
 }
@@ -51,7 +51,7 @@ const EventsList = ({ events, isAdmin, isMainPage }: EventsListProps) => {
                   {event.title}
                 </h4>
                 <p className="block font-sans text-base antialiased font-medium leading-relaxed">
-                  {formatDate(event.date)} {event.time}
+                  {formatDate(event.date)}
                 </p>
                 <p>{event.location}</p>
                 <a

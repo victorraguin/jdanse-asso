@@ -19,14 +19,15 @@ export interface GalleryImageTypes {
   imageUrl: string;
 }
 
-export interface Event {
-  _id: string;
+export interface EventTypes {
+  _id?: string;
   title: string;
+  date: string;
   startTime: string;
   endTime: string;
-  isFavorite?: boolean;
-  time: string;
   location: string;
   link: string;
   imageUrl: string;
+  description?: string;
+  isFavorite?: boolean;
 }

@@ -4,19 +4,21 @@ import { useState, useEffect } from "react";
 import Header from "./Header";
 import Image from "next/image";
 import { formatDate } from "@/utils/date";
-import { Event } from "@/types/global";
+import { EventTypes } from "@/types/global";
 import Script from "next/script";
 
-async function getFavEvent(): Promise<Event | null> {
+async function getFavEvent(): Promise<EventTypes | null> {
   try {
     console.log("Fetching events from API...");
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/events`
+      `/api/events`
     );
     const data = (await response.json()).data;
     console.log("Fetched data:", data);
     if (data.length > 0) {
-      const closestFavEvent = data.filter((event: Event) => event.isFavorite);
+      const closestFavEvent = data.filter(
+        (event: EventTypes) => event.isFavorite
+      );
       console.log("closestFavEvent", closestFavEvent);
       const closestFavEventDate = closestFavEvent.sort(
         (
@@ -38,7 +40,7 @@ async function getFavEvent(): Promise<Event | null> {
 }
 
 const Hero = () => {
-  const [favEvent, setFavEvent] = useState<Event | null>(null);
+  const [favEvent, setFavEvent] = useState<EventTypes | null>(null);
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
@@ -125,13 +127,11 @@ const Hero = () => {
               className="justify-self-center"
             />
             <h3 className="text-2xl italic mt-6 flex flex-row items-center">
-              Cours de danse  <Script src="/typewriter.js" defer></Script>
+              Cours de danse <Script src="/typewriter.js" defer></Script>
               <span id="text" className="text-secondary ml-2"></span>
               <span className="cursor">|</span>
             </h3>
-            <button
-              onClick={handleScroll}
-              className="mt-6 btn-primary block ">
+            <button onClick={handleScroll} className="mt-6 btn-primary block ">
               En savoir plus
             </button>
           </div>
@@ -152,7 +152,7 @@ const Hero = () => {
                 {favEvent.startTime} - {favEvent.endTime}
               </span>
               <span className="absolute bottom-0 right-0 text-white text-xs bg-black p-2 rounded-tl font-sans">
-                {formatDate(favEvent.date)} {favEvent.time}
+                {formatDate(favEvent.date)}
               </span>
               {favEvent.isFavorite && (
                 <span className="absolute top-0 left-0 text-xs bg-secondary p-2 rounded-br shadow shadow-black">

@@ -10,14 +10,30 @@ type ImageListProps = {
   initialImages: GalleryImageTypes[];
 };
 
-function ImageList({ initialImages }: ImageListProps) {
-  const [images, setImages] = useState<GalleryImageTypes[]>(initialImages);
+function ImageList() {
+  const [images, setImages] = useState<GalleryImageTypes[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { data: session, status } = useSession();
   const isAdmin = status === "authenticated";
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const { showNotification } = useNotification();
+
+  const getImageList = async () => {
+    const response = await fetch(
+      `/api/gallery`
+    );
+    const data = await response.json();
+    return data as GalleryImageTypes[];
+  };
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      const images = await getImageList();
+      setImages(images);
+    };
+    fetchImages();
+  }, []);
 
   const deleteImage = async (id: number) => {
     try {
