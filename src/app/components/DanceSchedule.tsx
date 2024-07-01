@@ -115,9 +115,9 @@ const DanceSchedule = () => {
         {danceCourses.map((course) => (
           <div
             key={course.title}
-            className="relative flex flex-col text-main shadow-md bg-clip-border rounded-xl w-[16%] overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out"
+            className="relative flex flex-col text-main shadow-md bg-clip-border rounded-xl w-full lg:w-[16%] overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out"
           >
-            <div className="relative h-[20rem] overflow-hidden">
+            <div className="relative h-[14rem] lg:h-[20rem] overflow-hidden">
               <Image
                 src={course.imageSrc}
                 alt={course.title}
@@ -125,7 +125,7 @@ const DanceSchedule = () => {
                 fill
               />
             </div>
-            <div className="p-6 text-center rounded-b-xl absolute bottom-0 bg-black/30 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="p-6 text-center rounded-b-xl absolute bottom-0 bg-black/30 w-full 2xl:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal">
                 {course.title}
               </h4>

@@ -15,14 +15,14 @@ function ImageList() {
   const [isLoading, setIsLoading] = useState(false);
   const { data: session, status } = useSession();
   const isAdmin = status === "authenticated";
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
+    null
+  );
 
   const { showNotification } = useNotification();
 
   const getImageList = async () => {
-    const response = await fetch(
-      `/api/gallery`
-    );
+    const response = await fetch(`/api/gallery`);
     const data = await response.json();
     return data as GalleryImageTypes[];
   };
@@ -73,7 +73,9 @@ function ImageList() {
 
   const showPrevImage = () => {
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((selectedImageIndex - 1 + images.length) % images.length);
+      setSelectedImageIndex(
+        (selectedImageIndex - 1 + images.length) % images.length
+      );
     }
   };
 
@@ -81,7 +83,7 @@ function ImageList() {
     <div className="flex flex-col">
       <h1 className="text-2xl underlineTitle w-fit">Gallerie Photos</h1>
 
-      <div className="flex flex-row items-center 2xl:justify-around flex-wrap rounded-2xl my-8">
+      <div className="flex flex-row items-center justify-around flex-wrap gap-6 rounded-2xl my-8">
         {images &&
           images.map((image, index) => (
             <div key={image._id} className="relative overflow-hidden">
@@ -98,7 +100,7 @@ function ImageList() {
                 </div>
               )}
               <Image
-                className="object-cover w-40 h-40 hover:scale-110 duration-300 ease-in-out cursor-pointer"
+                className="object-cover w-full md:w-40 h-40 hover:scale-110 duration-300 ease-in-out cursor-pointer"
                 src={image.imageUrl}
                 alt="Image"
                 width={100}
@@ -114,13 +116,10 @@ function ImageList() {
       {selectedImageIndex !== null && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
-          onClick={closeModal}
-        >
+          onClick={closeModal}>
           <div
-            className="relative bg-black border border-main/10 shadow-black shadow-lg"
-            style={{ width: '50vw', height: '50vh' }}
-            onClick={(e) => e.stopPropagation()}
-          >
+            className="relative bg-black border border-main/10 shadow-black shadow-lg w-3/4 md:w-1/2 h-1/2"
+            onClick={(e) => e.stopPropagation()}>
             <Image
               src={images[selectedImageIndex].imageUrl}
               alt="Selected Image"
@@ -131,14 +130,18 @@ function ImageList() {
             />
             <button
               className="absolute top-1/2 left-5 transform -translate-y-1/2 text-secondary p-2 text-4xl hover:scale-110"
-              onClick={(e) => { e.stopPropagation(); showPrevImage(); }}
-            >
+              onClick={(e) => {
+                e.stopPropagation();
+                showPrevImage();
+              }}>
               &#10094;
             </button>
             <button
               className="absolute top-1/2 right-5 transform -translate-y-1/2 text-secondary p-2 text-4xl hover:scale-110"
-              onClick={(e) => { e.stopPropagation(); showNextImage(); }}
-            >
+              onClick={(e) => {
+                e.stopPropagation();
+                showNextImage();
+              }}>
               &#10095;
             </button>
           </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState, useEffect } from "react";
@@ -11,9 +12,7 @@ import Loading from "@/utils/loading";
 async function getFavEvent(): Promise<EventTypes | null> {
   try {
     console.log("Fetching events from API...");
-    const response = await fetch(
-      `/api/events`
-    );
+    const response = await fetch(`/api/events`);
     const data = (await response.json()).data;
     console.log("Fetched data:", data);
     if (data.length > 0) {
@@ -104,8 +103,6 @@ const Hero = () => {
     }
   };
 
-  if (!favEvent) return <Loading />;
-
   return (
     <>
       <video
@@ -118,31 +115,38 @@ const Hero = () => {
       </video>
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent pointer-events-none"></div>
       <Header />
-      <div className="">
-        <section className="relative h-[90vh] flex-col">
-          <div className="relative z-10 text-main -bottom-14 left-0 space-y-10">
+      <div className="flex flex-col ">
+        <div className="items-center justify-center h-[90vh]">
+        <section className="relative flex-col text-center md:top-24">
+          <div className="relative z-10 text-main space-y-10">
             <Image
               src="/static/Jdanse2.png"
               alt="Logo"
               width={400}
               height={400}
               priority
-              className="justify-self-center"
+              className="mx-auto"
             />
-            <h3 className="text-2xl italic mt-6 flex flex-row items-center">
-              Cours de danse <Script src="/typewriter.js" defer></Script>
-              <span id="text" className="text-secondary ml-2"></span>
-              <span className="cursor">|</span>
+            <h3 className="text-2xl italic mt-6 flex flex-col md:flex-row items-center justify-center">
+              Cours de danse
+              <div className="flex flex-row items-center">
+                <Script src="/typewriter.js" defer></Script>
+                <span id="text" className="text-secondary ml-2"></span>
+                <span className="cursor">|</span>
+              </div>
             </h3>
-            <button onClick={handleScroll} className="mt-6 btn-primary block ">
+            <button
+              onClick={handleScroll}
+              className="mt-6 btn-primary mx-auto block">
               En savoir plus
             </button>
           </div>
         </section>
+        </div>
         {favEvent && (
           <div
             key={favEvent._id}
-            className="absolute flex flex-col shadow-md bg-clip-border hover:cursor-pointer z-40 rounded-xl w-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out right-20 top-60 ">
+            className="absolute flex flex-col shadow-md bg-clip-border hover:cursor-pointer z-40 rounded-xl w-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out bottom-10 md:right-20 md:top-60 4xl:right-1/3 ">
             <div className="relative h-36 overflow-hidden">
               <Image
                 src={favEvent.imageUrl}
@@ -175,7 +179,7 @@ const Hero = () => {
             </div>
           </div>
         )}
-      </div>
+        </div>
     </>
   );
 };

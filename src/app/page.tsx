@@ -10,7 +10,7 @@ import WelcomeMessage from "./components/WelcomeMessage";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col px-24">
+    <main className="flex min-h-screen flex-col px-6 lg:px-24 mx-auto max-w-screen-3xl">
       <BannerText />
       <Hero />
       <WelcomeMessage />

@@ -56,7 +56,7 @@ const Schedule = () => {
     <div className="container mx-auto">
       <div className="flex flex-col text-main rounded-2xl py-4">
         <h1 className="text-2xl underlineTitle w-fit">Le Planning</h1>
-        <div className="flex justify-center space-x-4 my-2">
+        <div className="flex justify-center space-x-4 my-6 md:my-2">
           {["Mardi", "Jeudi", "Vendredi"].map((day) => (
             <button
               key={day}

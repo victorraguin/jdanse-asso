@@ -22,7 +22,7 @@ function WelcomeMessage() {
           </div>
         </div>
       </section>
-      <div className="flex flex-row justify-around my-20">
+      <div className="flex flex-col md:flex-row justify-around my-20 space-y-4 md:space-y-0">
         <div className="flex flex-col items-center justify-center">
           <Image
             src="/icons/degree.png"
