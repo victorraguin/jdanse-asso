@@ -16,7 +16,7 @@ const Footer = () => {
             />
             <div className="flex space-x-4 mt-4">
               <Link
-                href="https://example.com"
+                href="https://www.facebook.com/p/JDanse-Asso-100069907428245"
                 target="_blank"
                 className="bg-yellow-500 h-fit border border-secondary hover:scale-105">
                 <Image
@@ -28,7 +28,7 @@ const Footer = () => {
                 />
               </Link>
               <Link
-                href="https://example.com"
+                href="tel:+33649182726"
                 target="_blank"
                 className="bg-yellow-500 p-1 rounded-full hover:scale-105">
                 <svg

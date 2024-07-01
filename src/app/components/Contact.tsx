@@ -8,7 +8,7 @@ export default function Contact() {
         vite!
       </h3>
       <div className="flex flex-row justify-center">
-        <a href="tel:+33682960001" className="btn-primary mx-2">
+        <a href="tel:+33649182726" className="btn-primary mx-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
@@ -23,7 +23,7 @@ export default function Contact() {
             />
           </svg>
         </a>
-        <a href="mailto:contact@danes.fr" className="btn-primary mx-2">
+        <a href="mailto:johannabarbe@free.fr" className="btn-primary mx-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"
