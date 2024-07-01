@@ -6,6 +6,7 @@ import Image from "next/image";
 import { formatDate } from "@/utils/date";
 import { EventTypes } from "@/types/global";
 import Script from "next/script";
+import Loading from "@/utils/loading";
 
 async function getFavEvent(): Promise<EventTypes | null> {
   try {
@@ -102,6 +103,8 @@ const Hero = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  if (!favEvent) return <Loading />;
 
   return (
     <>

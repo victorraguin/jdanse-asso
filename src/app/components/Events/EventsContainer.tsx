@@ -4,6 +4,7 @@ import { EventTypes } from "@/types/global";
 import EventsList from "./EventList";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import Loading from "@/utils/loading";
 
 export default function EventsContainer() {
   const [events, setEvents] = useState<EventTypes[]>([]);
@@ -37,7 +38,7 @@ export default function EventsContainer() {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Error: {error}</p>;
 
   return (

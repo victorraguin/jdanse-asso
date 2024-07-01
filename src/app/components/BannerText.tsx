@@ -21,8 +21,7 @@ export default function BannerText() {
     fetchBanner();
   }, []);
 
-  if (!banner) return <div>Loading...</div>;
-
+  if (!banner?.message) return <div></div>;
 
   return (
     <div className="text-secondary py-2 rounded relative w-full flex flex-row items-center z-20 bg-black">
