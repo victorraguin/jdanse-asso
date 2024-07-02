@@ -83,7 +83,7 @@ function ImageList() {
     <div className="flex flex-col">
       <h1 className="text-2xl underlineTitle w-fit">Gallerie Photos</h1>
 
-      <div className="flex flex-row items-center justify-around flex-wrap gap-6 rounded-2xl my-8">
+      <div className="flex flex-row items-center justify-around flex-wrap gap-2 md:gap-6 rounded-2xl my-8">
         {images &&
           images.map((image, index) => (
             <div key={image._id} className="relative overflow-hidden">
@@ -99,16 +99,17 @@ function ImageList() {
                   </button>
                 </div>
               )}
-              <Image
-                className="object-cover w-full md:w-40 h-40 hover:scale-110 duration-300 ease-in-out cursor-pointer"
-                src={image.imageUrl}
-                alt="Image"
-                width={100}
-                height={100}
-                priority
-                quality={100}
-                onClick={() => openModal(index)}
-              />
+              <div className="relative w-[9rem] h-[10rem] md:w-40 md:h-60 overflow-hidden rounded-xl">
+                <Image
+                  className="object-cover w-full hover:scale-125 rounded-xl duration-300 ease-in-out cursor-pointer"
+                  src={image.imageUrl}
+                  alt="Image"
+                  fill
+                  priority
+                  quality={100}
+                  onClick={() => openModal(index)}
+                />
+              </div>
             </div>
           ))}
       </div>
@@ -118,7 +119,7 @@ function ImageList() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
           onClick={closeModal}>
           <div
-            className="relative bg-black border border-main/10 shadow-black shadow-lg w-3/4 md:w-1/2 h-1/2"
+            className="relative bg-black border border-main/10 shadow-black shadow-lg w-[90%] h-3/4 md:w-1/2 md:h-1/2"
             onClick={(e) => e.stopPropagation()}>
             <Image
               src={images[selectedImageIndex].imageUrl}

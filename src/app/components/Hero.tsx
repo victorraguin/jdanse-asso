@@ -88,14 +88,6 @@ const Hero = () => {
     fetchFavEvent();
   }, []);
 
-  useEffect(() => {
-    if (favEvent) {
-      console.log("fav", favEvent);
-    } else {
-      console.log("No favorite event found.");
-    }
-  }, [favEvent]);
-
   const handleScroll = () => {
     const section = document.getElementById("cours");
     if (section) {
@@ -117,31 +109,35 @@ const Hero = () => {
       <Header />
       <div className="flex flex-col ">
         <div className="items-center justify-center h-[90vh]">
-        <section className="relative flex-col text-center md:top-24">
-          <div className="relative z-10 text-main space-y-10">
-            <Image
-              src="/static/Jdanse2.png"
-              alt="Logo"
-              width={400}
-              height={400}
-              priority
-              className="mx-auto"
-            />
-            <h3 className="text-2xl italic mt-6 flex flex-col md:flex-row items-center justify-center">
-              Cours de danse
-              <div className="flex flex-row items-center">
-                <Script src="/typewriter.js" defer></Script>
-                <span id="text" className="text-secondary ml-2"></span>
-                <span className="cursor">|</span>
+          <section className="relative flex-col text-center md:top-16 xl:top-5">
+            <div className="relative z-10 text-main space-y-10">
+              <Image
+                src="/static/Jdanse2.png"
+                alt="Logo"
+                width={400}
+                height={400}
+                priority
+                className="mx-auto"
+              />
+              <div className="flex flex-col items-center justify-center mt-6 ">
+                <h3 className="text-2xl italic  flex flex-col md:flex-row items-center justify-center">
+                  Cours de danse
+                  <div className="flex flex-row items-center">
+                    <Script src="/typewriter.js" defer></Script>
+                    <span id="text" className="text-secondary ml-2"></span>
+                    <span className="cursor">|</span>
+                  </div>
+                  <br />
+                </h3>
+                <h3 className="text-2xl italic">à Paimboeuf</h3>
               </div>
-            </h3>
-            <button
-              onClick={handleScroll}
-              className="mt-6 btn-primary mx-auto block">
-              En savoir plus
-            </button>
-          </div>
-        </section>
+              <button
+                onClick={handleScroll}
+                className="mt-6 btn-primary mx-auto block">
+                En savoir plus
+              </button>
+            </div>
+          </section>
         </div>
         {favEvent && (
           <div
@@ -179,7 +175,7 @@ const Hero = () => {
             </div>
           </div>
         )}
-        </div>
+      </div>
     </>
   );
 };

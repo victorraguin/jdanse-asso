@@ -18,7 +18,7 @@ const EventsList = ({ events, isAdmin, isMainPage }: EventsListProps) => {
   return (
     <div className="flex flex-col text-main rounded-2xl py-4 my-8">
       <h1 className="text-2xl underlineTitle w-fit ">Les évènements J'Danse</h1>
-      <div className="flex flex-row flew-wrap rounded-2xl mt-6">
+      <div className="flex flex-col items-center md:flex-row flew-wrap rounded-2xl mt-6">
         {eventList.length > 0 &&
           eventList.map((event) => (
             <div
