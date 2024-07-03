@@ -1,13 +1,14 @@
 "use client";
-import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useState } from "react";
-import MenuIcon from "../../../public/icons/MenuIcon";
-import XIcon from "../../../public/icons/XIcon";
+import MenuIcon from "../../../../public/icons/MenuIcon";
+import XIcon from "../../../../public/icons/XIcon";
 
-function Header() {
-  const { data: session, status } = useSession();
-  const isAdmin = status === "authenticated";
+type HeaderProps = {
+  isAdmin: boolean;
+};
+
+export default function Header( { isAdmin }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -15,7 +16,7 @@ function Header() {
   };
 
   return (
-    <header className="text-main shadow-md">
+    <header className="text-main shadow-md relative z-40">
       <div className="container mx-auto flex justify-between items-center p-4">
         <Image
           src="/static/Logo.png"
@@ -106,5 +107,3 @@ function Header() {
     </header>
   );
 }
-
-export default Header;

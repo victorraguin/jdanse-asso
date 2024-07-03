@@ -31,3 +31,15 @@ export interface EventTypes {
   description?: string;
   isFavorite?: boolean;
 }
+
+export type DanceClass = {
+  imageSrc: string;
+  title: string;
+  description: string;
+  location: string;
+  days: {
+    day: string;
+    time: string;
+    age: string;
+  }[];
+}

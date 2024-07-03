@@ -5,8 +5,22 @@ import { GalleryImageTypes } from "@/types/global";
 
 export async function GET(request: NextRequest) {
   await dbConnect();
-  const images = (await GalleryImage.find({})) as GalleryImageTypes[];
-  return NextResponse.json(images);
+  try {
+    const images = (await GalleryImage.find({})) as GalleryImageTypes[];
+    console.log(images);
+    return NextResponse.json(images);
+  } catch (error) {
+    if (error instanceof Error) {
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(
+      { success: false, error: "Unknown error" },
+      { status: 400 }
+    );
+  }
 }
 
 export async function POST(request: NextRequest) {

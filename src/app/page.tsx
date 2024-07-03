@@ -1,23 +1,26 @@
 import BannerText from "./components/BannerText";
 import Contact from "./components/Contact";
-import DanceSchedule from "./components/DanceSchedule";
-import EventsContainer from "./components/Events/EventsContainer";
 import Footer from "./components/Footer";
-import Hero from "./components/Hero";
+import ServerHeader from "./components/Header/ServerHeader";
+import ServerHero from "./components/Hero/ServerHero";
 import ImageList from "./components/ImageList";
 import Schedule from "./components/Schedule";
 import WelcomeMessage from "./components/WelcomeMessage";
+import ServerDanceClasses from "./components/DanceClasses/ServerDanceClasses";
+import ServerEvents from "./components/Events/ServerEvents";
+import ServerGallery from "./components/Gallery/ServerGallery";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col px-6 lg:px-24 mx-auto max-w-screen-3xl">
+    <main className="flex min-h-screen flex-col">
       <BannerText />
-      <Hero />
+      <ServerHeader />
+      <ServerHero />
       <WelcomeMessage />
-      <DanceSchedule />
+      <ServerDanceClasses />
       <Schedule />
-      <EventsContainer />
-      <ImageList />
+      <ServerEvents />
+      <ServerGallery />
       <Contact />
       <Footer />
     </main>

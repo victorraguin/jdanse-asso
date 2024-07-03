@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css?family=Work+Sans%3A400%7CDM+Serif+Display%3A400&display=fallback&ver=4.6.14");
 
 :root {
   --foreground-rgb: 0, 0, 0;

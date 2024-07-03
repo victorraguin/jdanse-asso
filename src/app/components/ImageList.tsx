@@ -7,33 +7,17 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 type ImageListProps = {
-  initialImages: GalleryImageTypes[];
+  imagesList: GalleryImageTypes[];
 };
 
-function ImageList() {
-  const [images, setImages] = useState<GalleryImageTypes[]>([]);
+function ImageList({ imagesList }: ImageListProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const [images, setImages] = useState<GalleryImageTypes[]>(imagesList || []);
   const { data: session, status } = useSession();
   const isAdmin = status === "authenticated";
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
-    null
-  );
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const { showNotification } = useNotification();
-
-  const getImageList = async () => {
-    const response = await fetch(`/api/gallery`);
-    const data = await response.json();
-    return data as GalleryImageTypes[];
-  };
-
-  useEffect(() => {
-    const fetchImages = async () => {
-      const images = await getImageList();
-      setImages(images);
-    };
-    fetchImages();
-  }, []);
 
   const deleteImage = async (id: number) => {
     try {
@@ -53,6 +37,10 @@ function ImageList() {
       showNotification("error", `Erreur: ${error}`);
     }
   };
+
+  useEffect(() => {
+    setImages(imagesList);
+  }, [imagesList]);
 
   const pathname = usePathname();
   const isMainPage = pathname === "/";
@@ -78,6 +66,9 @@ function ImageList() {
       );
     }
   };
+
+  console.log(images);
+  console.log(imagesList);
 
   return (
     <div className="flex flex-col">
@@ -124,8 +115,8 @@ function ImageList() {
             <Image
               src={images[selectedImageIndex].imageUrl}
               alt="Selected Image"
-              layout="fill"
-              objectFit="contain"
+              fill
+              style={{ objectFit: "contain" }}
               priority
               quality={100}
             />

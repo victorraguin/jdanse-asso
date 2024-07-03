@@ -5,15 +5,20 @@ import { useState } from "react";
 import Image from "next/image";
 import { EventTypes } from "@/types/global";
 import { formatDate } from "@/utils/date";
+import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 interface EventsListProps {
   events: EventTypes[];
-  isAdmin: boolean;
-  isMainPage: boolean;
 }
 
-const EventsList = ({ events, isAdmin, isMainPage }: EventsListProps) => {
+const EventsList = ({ events }: EventsListProps) => {
   const [eventList, setEventList] = useState(events);
+  const { data: session, status } = useSession();
+  const isAdmin = status === "authenticated";
+
+  const pathname = usePathname();
+  const isMainPage = pathname === "/";
 
   return (
     <div className="flex flex-col text-main rounded-2xl py-4 my-8">
