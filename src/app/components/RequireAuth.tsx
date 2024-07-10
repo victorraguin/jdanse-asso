@@ -1,3 +1,4 @@
+import Loading from "@/utils/loading";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { ReactNode, useEffect } from "react";
@@ -17,7 +18,7 @@ export default function RequireAuth({ children }: RequireAuthProps) {
   }, [status, router]);
 
   if (status === "loading") {
-    return <div className="flex justify-center items-center h-screen">Chargement...</div>;
+    return <div className="flex justify-center items-center h-full"><Loading /></div>;
   }
   if (status === "authenticated") {
     return <>{children}</>;

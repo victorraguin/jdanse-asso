@@ -1,14 +1,4 @@
-export interface Event {
-  _id: string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  link: string;
-  imageUrl: string;
-}
-
-export interface Banner {
+export interface BannerTypes {
   message: string;
   buttonText?: string;
   buttonLink?: string;

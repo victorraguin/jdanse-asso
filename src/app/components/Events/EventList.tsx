@@ -7,6 +7,7 @@ import { EventTypes } from "@/types/global";
 import { formatDate } from "@/utils/date";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { useNotification } from "@/context/NotificationContext";
 
 interface EventsListProps {
   events: EventTypes[];
@@ -15,13 +16,27 @@ interface EventsListProps {
 const EventsList = ({ events }: EventsListProps) => {
   const [eventList, setEventList] = useState(events);
   const { data: session, status } = useSession();
+  const { showNotification } = useNotification();
   const isAdmin = status === "authenticated";
 
   const pathname = usePathname();
   const isMainPage = pathname === "/";
 
+  const handleDeleteEvent = async (id: string | undefined): Promise<void> => {
+    const response = await fetch(`/api/events/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      showNotification("success", "L'événement a été supprimé !");
+      setEventList(eventList.filter((event) => event._id !== id));
+    } else {
+      showNotification("error", "Une erreur est survenue");
+    }
+  };
+
   return (
-    <div className="flex flex-col text-main rounded-2xl py-4 my-8">
+    <div className="flex flex-col text-main rounded-2xl py-4 my-12 px-6 lg:px-24">
       <h1 className="text-2xl underlineTitle w-fit ">Les évènements J'Danse</h1>
       <div className="flex flex-col items-center md:flex-row flew-wrap rounded-2xl mt-6">
         {eventList.length > 0 &&
@@ -67,12 +82,18 @@ const EventsList = ({ events }: EventsListProps) => {
                   Lien de l'évènement
                 </a>
                 {isAdmin && !isMainPage && (
-                  <a
-                    href={`/events/${event._id}/edit`}
-                    className=" italic hover:underline block"
-                    target="_blank">
-                    Modifier
-                  </a>
+                  <div className="flex flex-row justify-between">
+                    <a
+                      href={`/admin/events/${event._id}/edit`}
+                      className=" italic hover:underline block py-1 text-orange-600 w-fit">
+                      Modifier
+                    </a>
+                    <button
+                      className="py-1 text-orange-600 w-fit italic hover:underline block"
+                      onClick={() => handleDeleteEvent(event._id)}>
+                      Supprimer
+                    </button>
+                  </div>
                 )}
               </div>
             </div>

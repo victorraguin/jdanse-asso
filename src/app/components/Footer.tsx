@@ -3,16 +3,18 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="text-main py-8 border-t border-secondary">
+    <footer className="text-main py-8 border-t border-secondary px-6 lg:px-24">
       <div className="mx-auto flex flex-col md:flex-row justify-around items-center">
         {/* Bloc gauche */}
         <div className="mb-8 md:mb-0 w-1/4">
-          <div className="flex flex-row justify-around items-center align-middle w-full">
+          <div className="flex flex-col md:flex-row justify-around items-center align-middle w-full">
             <Image
               src="/static/Jdanse2.png"
               alt="Logo de l'association"
               width={120}
               height={120}
+              priority
+              sizes="(max-width: 768px) 100vw, 1200px"
             />
             <div className="flex space-x-4 mt-4">
               <Link
@@ -50,12 +52,18 @@ const Footer = () => {
 
         {/* Bloc droit */}
         <div className="text-center flex flex-col justify-around items-center">
+          <div className="mb-2">
+            <Link href="/admin" target="_blank">
+              <p className="underline min-w-max">Administration</p>
+            </Link>
+          </div>
           <Link href="/mentions-legales">
             <p className="block mb-2 hover:underline min-w-max">
               Mentions légales
             </p>
           </Link>
           {/* Ajoutez d'autres liens ici */}
+
           <div className="">
             Site créé par :
             <Link href="https://www.victor-raguin.fr" target="_blank">

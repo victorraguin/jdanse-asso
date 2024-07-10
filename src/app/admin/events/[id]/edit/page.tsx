@@ -2,7 +2,7 @@
 "use client";
 import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import EventForm from "@/components/EventForm";
+import EventForm from "@/components/Events/EventForm";
 import RequireAuth from "@/components/RequireAuth";
 import { useNotification } from "@/context/NotificationContext";
 import { EventTypes } from "@/types/global";
@@ -16,7 +16,7 @@ export default function EditEvent() {
 
   useEffect(() => {
     const fetchEvent = async () => {
-      const response = await fetch(`/api/events/${id}`);
+      const response = await fetch(`/api/events/${id}`, { cache: "no-store" });
       const data = await response.json();
       setEvent(data.data);
     };
@@ -28,10 +28,11 @@ export default function EditEvent() {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedEvent),
+      cache: "no-store",
     });
 
     if (response.ok) {
-      router.push("/admin");
+      router.push("/admin/events");
       router.refresh();
       showNotification("success", "L'événement a été modifié !");
     } else {

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongoose';
 import Banner from '@/models/Banner';
 import { middleware } from '../middleware'; // Importez le middleware
+import { headers } from 'next/headers';
 
 export async function GET() {
   await dbConnect();
@@ -24,7 +25,9 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const banner = await Banner.create(body);
-    return NextResponse.json({ success: true, data: banner }, { status: 201 });
+    const response = NextResponse.json({ success: true, data: banner }, { status: 201 });
+    response.headers.set('Cache-Control', 'no-store');
+    return response;
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ success: false, error: error.message }, { status: 400 });
@@ -41,7 +44,9 @@ export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();
     const banner = await Banner.findOneAndUpdate({}, body, { new: true, upsert: true });
-    return NextResponse.json({ success: true, data: banner });
+    const response = NextResponse.json({ success: true, data: banner });
+    response.headers.set('Cache-Control', 'no-store');
+    return response;
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json({ success: false, error: error.message }, { status: 400 });

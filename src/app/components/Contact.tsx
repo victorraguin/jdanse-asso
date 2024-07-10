@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 export default function Contact() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 my-8">
+    <div className="flex flex-col items-center justify-center space-y-6 my-12 px-6 lg:px-24">
       <h1 className="text-2xl underlineTitle w-fit">Envie d'en savoir plus?</h1>
       <h3 className="text-secondary text-center">
         Contactez nous par téléphone ou par e-mail, nous vous répondrons au plus

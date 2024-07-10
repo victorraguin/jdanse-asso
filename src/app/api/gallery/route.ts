@@ -7,7 +7,6 @@ export async function GET(request: NextRequest) {
   await dbConnect();
   try {
     const images = (await GalleryImage.find({})) as GalleryImageTypes[];
-    console.log(images);
     return NextResponse.json(images);
   } catch (error) {
     if (error instanceof Error) {

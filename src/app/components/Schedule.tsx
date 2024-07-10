@@ -53,8 +53,8 @@ const Schedule = () => {
   ];
 
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col text-main rounded-2xl py-4">
+    <div className="container mx-auto px-6 lg:px-24">
+      <div className="flex flex-col text-main rounded-2xl py-4 my-12">
         <h1 className="text-2xl underlineTitle w-fit">Le Planning</h1>
         <div className="flex justify-center space-x-4 my-6 md:my-2">
           {["Mardi", "Jeudi", "Vendredi"].map((day) => (
@@ -77,7 +77,7 @@ const Schedule = () => {
               <h3 className="text-lg font-semibold mb-4">
                 {daySchedule.location}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
                 {daySchedule.classes.map((classInfo, index) => (
                   <div
                     key={index}

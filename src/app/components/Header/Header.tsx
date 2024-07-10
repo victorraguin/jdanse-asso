@@ -4,11 +4,7 @@ import React, { useState } from "react";
 import MenuIcon from "../../../../public/icons/MenuIcon";
 import XIcon from "../../../../public/icons/XIcon";
 
-type HeaderProps = {
-  isAdmin: boolean;
-};
-
-export default function Header( { isAdmin }: HeaderProps) {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -16,15 +12,16 @@ export default function Header( { isAdmin }: HeaderProps) {
   };
 
   return (
-    <header className="text-main shadow-md relative z-40">
+    <header className="text-main shadow-md relative z-50 px-6 lg:px-24">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <Image
-          src="/static/Logo.png"
-          alt="Logo"
-          width={80}
-          height={100}
-          className="z-10"
-        />
+        <div className="w-[80px] h-[80px] relative z-10">
+          <Image
+            src="/static/Logo.png"
+            alt="Logo"
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+          />
+        </div>
         <button className="lg:hidden z-20" onClick={toggleMenu}>
           {isOpen ? (
             <XIcon className="w-8 h-8 text-secondary" onClick={toggleMenu} />
@@ -59,11 +56,6 @@ export default function Header( { isAdmin }: HeaderProps) {
                 Contact
               </a>
             </li>
-            <li>
-              <a href="/admin" className="underline">
-                {isAdmin ? "Admin" : "Se connecter"}
-              </a>
-            </li>
           </ul>
         </nav>
         <nav
@@ -94,11 +86,6 @@ export default function Header( { isAdmin }: HeaderProps) {
             <li>
               <a href="#" className="underline" onClick={toggleMenu}>
                 Contact
-              </a>
-            </li>
-            <li>
-              <a href="/admin" className="underline" onClick={toggleMenu}>
-                {isAdmin ? "Admin" : "Se connecter"}
               </a>
             </li>
           </ul>

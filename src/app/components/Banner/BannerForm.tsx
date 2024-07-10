@@ -1,11 +1,11 @@
 import { useNotification } from "@/context/NotificationContext";
-import { Banner } from "@/types/global";
+import { BannerTypes } from "@/types/global";
 import { useState, useEffect, FormEvent } from "react";
 
 interface BannerFormProps {
   onSubmit: (banner: any) => Promise<void>;
   onDelete?: () => Promise<void>;
-  initialData: Banner | null;
+  initialData: BannerTypes | null;
 }
 
 const MAX_MESSAGE_LENGTH = 100;
@@ -34,7 +34,9 @@ export default function BannerForm({
     setLoading(true);
     const bannerData = { message, buttonText, buttonLink };
     await onSubmit(bannerData);
-    showNotification("success", "Bannière en ligne !");
+    setMessage("");
+    setButtonText("");
+    setButtonLink("");
     setLoading(false);
   };
 
@@ -54,7 +56,7 @@ export default function BannerForm({
         onChange={(e) => setMessage(e.target.value)}
         maxLength={MAX_MESSAGE_LENGTH}
         required
-        className="w-1/2"
+        className="md:w-1/2"
       />
       <div className="text-sm text-gray-500">
         {message.length}/{MAX_MESSAGE_LENGTH} caractères
@@ -74,7 +76,7 @@ export default function BannerForm({
         placeholder="Lien du bouton"
         className="input"
       />
-      <div className="flex flex-row w-1/2 justify-around">
+      <div className="flex flex-row space-x-2 md:space-x-0 md:w-1/2 justify-around">
         <button type="submit" className="btn">
           {loading ? "Enregistrement en cours..." : "Enregistrer"}
         </button>

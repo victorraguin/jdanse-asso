@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import GalleryUploadForm from "@/components/GalleryUploadForm";
+import GalleryUploadForm from "@/components/Gallery/GalleryUploadForm";
 import RequireAuth from "@/components/RequireAuth";
-import ImageMosaic from "@/components/ImageList";
+import ImageMosaic from "@/components/Gallery/ImageList";
 import { useNotification } from "@/context/NotificationContext";
 import { GalleryImageTypes } from "@/types/global";
 
@@ -29,6 +29,7 @@ export default function Gallery() {
           {
             method: "POST",
             body: formData,
+            cache: "no-store",
           }
         );
 
@@ -44,6 +45,7 @@ export default function Gallery() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ imageUrls }),
+        cache: "no-store",
       });
 
       if (response.ok) {
@@ -52,7 +54,7 @@ export default function Gallery() {
         setImageList([...imageList, ...newImages.data]);
         setImagesToUpload([]);
         setPreviews([]);
-        router.push("/gallery");
+        router.push("/admin/gallery");
       }
     } catch (error) {
       showNotification("error", `Erreur: ${error}`);
@@ -63,7 +65,8 @@ export default function Gallery() {
 
   const getImageList = async () => {
     const response = await fetch(
-      `/api/gallery`
+      `/api/gallery`,
+      { cache: "no-store" }
     );
     const data = await response.json();
     return data as GalleryImageTypes[];
@@ -91,7 +94,7 @@ export default function Gallery() {
           previews={previews}
           setPreviews={setPreviews}
         />
-        <ImageMosaic />
+        <ImageMosaic imagesList={imageList} />
       </div>
     </RequireAuth>
   );

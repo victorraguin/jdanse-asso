@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import GalleryUploadForm from "@/components/GalleryUploadForm";
+import GalleryUploadForm from "@/components/Gallery/GalleryUploadForm";
 import RequireAuth from "@/components/RequireAuth";
-import ImageMosaic from "@/components/ImageList";
+import ImageMosaic from "@/components/Gallery/ImageList";
 import { useNotification } from "@/context/NotificationContext";
 import { GalleryImageTypes } from "@/types/global";
 
@@ -89,7 +89,7 @@ export default function Gallery() {
           previews={previews}
           setPreviews={setPreviews}
         />
-        <ImageMosaic />
+        <ImageMosaic imagesList={imageList} />
       </div>
     </RequireAuth>
   );

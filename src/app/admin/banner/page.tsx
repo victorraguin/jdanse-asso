@@ -1,47 +1,58 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Banner } from "@/types/global";
-import BannerForm from "@/components/BannerForm";
+import { BannerTypes } from "@/types/global";
 import RequireAuth from "@/components/RequireAuth";
-import Link from "next/link";
-import Toast from "@/utils/toast";
 import { useNotification } from "@/context/NotificationContext";
+import BannerForm from "@/components/Banner/BannerForm";
+import BannerText from "@/components/Banner/BannerText";
 
 export default function BannerPage() {
-  const [banner, setBanner] = useState<Banner | null>(null);
+  const [banner, setBanner] = useState<BannerTypes | null>(null);
   const router = useRouter();
   const { showNotification } = useNotification();
 
   useEffect(() => {
     const fetchBanner = async () => {
-      const response = await fetch("/api/banner");
+      const response = await fetch("/api/banner", { cache: "no-store" });
       const data = await response.json();
       setBanner(data.data);
     };
     fetchBanner();
   }, []);
 
-  const saveBanner = async (bannerData: Banner) => {
+  const saveBanner = async (bannerData: BannerTypes) => {
     const response = await fetch("/api/banner", {
       method: banner ? "PUT" : "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bannerData),
+      cache: "no-store",
     });
 
     if (response.ok) {
-      router.push("/events");
+      showNotification(
+        "success",
+        `Bannière en ${banner ? "modifiée" : "ajoutée"} !`
+      );
+      router.refresh();
+      router.push("/admin/banner");
+      setBanner({
+        ...banner,
+        message: bannerData.message,
+      });
     }
   };
 
   const deleteBanner = async () => {
     const response = await fetch("/api/banner", {
       method: "DELETE",
+      cache: "no-store",
     });
 
     if (response.ok) {
       showNotification("success", "Bannière supprimée !");
-      router.push("/events");
+      setBanner(null);
+      router.push("/admin/banner");
     }
   };
 
@@ -49,11 +60,13 @@ export default function BannerPage() {
     <RequireAuth>
       <div className="container mx-auto p-4">
         <h1 className="text-2xl font-bold mb-4">
-          {banner ? "Modifier la Bannière" : "Ajouter une Bannière"}
+          {banner ? "Modifier la Bannière : " : "Ajouter une Bannière"}
         </h1>
-        <Link href="/admin" className="btn btn-primary">
-          Retour
-        </Link>
+        {banner && (
+          <div className="border border-secondary rounded-lg mb-4">
+            <BannerText banner={banner} />
+          </div>
+        )}
         <BannerForm
           onSubmit={saveBanner}
           onDelete={deleteBanner}

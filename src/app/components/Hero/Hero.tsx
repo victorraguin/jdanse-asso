@@ -1,15 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unescaped-entities */
 "use client";
-import { useState, useEffect } from "react";
-import Header from "../Header/Header";
 import Image from "next/image";
 import { formatDate } from "@/utils/date";
 import { EventTypes } from "@/types/global";
 import Script from "next/script";
-import Loading from "@/utils/loading";
-import ServerHeader from "../Header/ServerHeader";
-import ServerHero from "./ServerHero";
 
 type Props = {
   favEvent: EventTypes | null;
@@ -18,7 +13,7 @@ type Props = {
 const Hero = ({ favEvent }: Props) => {
 
   return (
-    <>
+    <div className="px-6 lg:px-24">
       <video
         className="absolute inset-0 w-full h-full object-cover opacity-50"
         autoPlay
@@ -32,7 +27,7 @@ const Hero = ({ favEvent }: Props) => {
         <Presentation />
         {favEvent && <FavEvent favEvent={favEvent} />}
       </div>
-    </>
+    </div>
   );
 };
 
@@ -47,7 +42,7 @@ function Presentation() {
   return (
     <div className="items-center justify-center h-[90vh]">
       <section className="relative flex-col text-center md:top-16 xl:top-5">
-        <div className="relative z-10 text-main space-y-10">
+        <div className="relative z-10 text-main space-y-10 ">
           <Image
             src="/static/Jdanse2.png"
             alt="Logo"
@@ -84,7 +79,7 @@ function FavEvent({ favEvent }: { favEvent: EventTypes | null }) {
   return (
     <div
       key={favEvent._id}
-      className="absolute flex flex-col shadow-md bg-clip-border hover:cursor-pointer z-40 rounded-xl w-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out bottom-10 md:right-20 md:top-60 4xl:right-1/3 ">
+      className="absolute flex flex-col shadow-md bg-clip-border hover:cursor-pointer z-40 rounded-xl w-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out bottom-0 right-[4rem] md:right-10 md:bottom-80 xl:right-20 xl:top-60 3xl:right-28 4xl:right-1/4 5xl:right-1/3">
       <div className="relative h-36 overflow-hidden">
         <Image
           src={favEvent.imageUrl}

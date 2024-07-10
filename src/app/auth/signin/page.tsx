@@ -37,7 +37,7 @@ export default function SignIn() {
         method="post"
         action="/api/auth/callback/credentials"
         className="flex flex-col items-center justify-center space-y-4">
-        <div className="grid grid-cols-2 grid-rows-2 w-3/4 space-y-4 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 w-full md:w-3/4 space-y-4 mb-4">
           <input name="csrfToken" type="hidden" value={csrfToken ?? ""} />
           <p>Email</p>
           <label>

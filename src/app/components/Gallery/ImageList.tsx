@@ -67,14 +67,11 @@ function ImageList({ imagesList }: ImageListProps) {
     }
   };
 
-  console.log(images);
-  console.log(imagesList);
-
   return (
-    <div className="flex flex-col">
-      <h1 className="text-2xl underlineTitle w-fit">Gallerie Photos</h1>
+    <div className="flex flex-col my-12 px-6 lg:px-24">
+      <h1 className="text-2xl underlineTitle w-fit">Galerie Photos</h1>
 
-      <div className="flex flex-row items-center justify-around flex-wrap gap-2 md:gap-6 rounded-2xl my-8">
+      <div className="flex flex-row items-center justify-around flex-wrap gap-2 md:gap-6 rounded-2xl my-12">
         {images &&
           images.map((image, index) => (
             <div key={image._id} className="relative overflow-hidden">
@@ -90,12 +87,13 @@ function ImageList({ imagesList }: ImageListProps) {
                   </button>
                 </div>
               )}
-              <div className="relative w-[9rem] h-[10rem] md:w-40 md:h-60 overflow-hidden rounded-xl">
+              <div className="relative w-[9rem] h-[10rem] md:w-40 xl:w-[240px] 2xl:w-[280px] 3xl:w-[380px] md:h-60 overflow-hidden rounded-xl">
                 <Image
                   className="object-cover w-full hover:scale-125 rounded-xl duration-300 ease-in-out cursor-pointer"
                   src={image.imageUrl}
                   alt="Image"
                   fill
+                  sizes="(max-width: 768px) 100vw, 1200px"
                   priority
                   quality={100}
                   onClick={() => openModal(index)}
@@ -116,6 +114,7 @@ function ImageList({ imagesList }: ImageListProps) {
               src={images[selectedImageIndex].imageUrl}
               alt="Selected Image"
               fill
+              sizes="(max-width: 768px) 100vw, 1200px"
               style={{ objectFit: "contain" }}
               priority
               quality={100}

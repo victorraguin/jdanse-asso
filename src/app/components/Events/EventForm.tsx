@@ -2,6 +2,7 @@
 import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
 import { EventTypes } from "@/types/global";
+import { useNotification } from "@/context/NotificationContext";
 
 interface EventFormProps {
   onSubmit: (event: EventTypes) => Promise<void>;
@@ -20,6 +21,8 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState(initialData?.imageUrl || "");
   const [loading, setLoading] = useState(false);
+
+  const { showNotification } = useNotification();
 
   useEffect(() => {
     if (initialData?.date) {
@@ -46,9 +49,33 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    let imageUrl = initialData?.imageUrl || "";
 
     setLoading(true);
+
+    // Vérifier que tous les champs sont remplis
+    if (!title || !date || !startTime || !endTime || !location || !link || !description) {
+      showNotification("error", "Veuillez remplir tous les champs");
+      setLoading(false);
+      return;
+    }
+
+    // Convertir les valeurs en objets Date
+    const startDate = new Date(`${date}T${startTime}`);
+    const endDate = new Date(`${date}T${endTime}`);
+
+    // Vérifier si l'heure de début est avant l'heure de fin
+    if (startDate.getTime() > endDate.getTime()) {
+      showNotification("error", "L'heure de fin doit être postérieure à l'heure de début");
+      setLoading(false);
+      return;
+    }
+
+    // Vérifier si la date est dans le futur
+    if (new Date(date).getTime() < new Date().getTime()) {
+      showNotification("error", "La date doit être dans le futur");
+      setLoading(false);
+      return;
+    }
 
     if (image) {
       const formData = new FormData();
@@ -65,21 +92,32 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
 
       const data = await res.json();
       if (data.secure_url) {
-        imageUrl = data.secure_url;
+        setImageUrl(data.secure_url);
         setImageUrl(imageUrl);
       } else {
         console.error("Image upload failed", data);
       }
     }
 
-    const newEvent: EventTypes = { title, date, startTime, endTime, location, link, imageUrl, description, isFavorite };
+    const newEvent: EventTypes = { 
+      title, 
+      date, 
+      startTime, 
+      endTime, 
+      location, 
+      link, 
+      imageUrl, 
+      description, 
+      isFavorite 
+    };
+
     await onSubmit(newEvent);
     setLoading(false);
   };
 
   return (
     <div className="flex flex-col items-center w-full">
-      <form onSubmit={handleSubmit} className="grid grid-cols-3 gap-6 w-full max-w-4xl">
+      <form onSubmit={handleSubmit} className="grid grid-cols-3 gap-3 md:gap-6 w-full max-w-4xl items-end">
         <div className="flex flex-col">
           <label className="text-sm font-bold">Nom de l'événement</label>
           <input
@@ -89,6 +127,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             placeholder="Titre"
             required
             className="input"
+            name="title"
           />
         </div>
         <div className="flex flex-col">
@@ -99,6 +138,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             onChange={(e) => setDate(e.target.value)}
             required
             className="input"
+            name="date"
           />
         </div>
         <div className="flex flex-col">
@@ -109,6 +149,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             onChange={(e) => setStartTime(e.target.value)}
             required
             className="input"
+            name="startTime"
           />
         </div>
         <div className="flex flex-col">
@@ -119,6 +160,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             onChange={(e) => setEndTime(e.target.value)}
             required
             className="input"
+            name="endTime"
           />
         </div>
         <div className="flex flex-col">
@@ -130,6 +172,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             placeholder="Lieu"
             required
             className="input"
+            name="location"
           />
         </div>
         <div className="flex flex-col">
@@ -141,6 +184,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             placeholder="Lien"
             required
             className="input"
+            name="link"
           />
         </div>
         <div className="flex flex-col col-span-3">
@@ -150,6 +194,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description de l'évènement"
             className="input"
+            name="description"
           />
         </div>
         <div className="flex flex-col col-span-3">
@@ -160,13 +205,14 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
               checked={isFavorite}
               onChange={(e) => setIsFavorite(e.target.checked)}
               className="input"
+              name="isFavorite"
             />
             <span>Ajouter aux favoris</span>
           </label>
         </div>
         <div className="flex flex-col col-span-3">
           <label className="text-sm font-bold">Image de l'évènement</label>
-          <input type="file" onChange={handleImageChange} className="input" />
+          <input type="file" onChange={handleImageChange} className="input" name="image" />
         </div>
         <div className="flex flex-col col-span-3">
           <button

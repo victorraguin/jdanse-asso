@@ -12,7 +12,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <html lang="en">
-      <body className={`${workSans.className} antialiased px-6 lg:px-24 mx-auto max-w-screen-3xl`}>
+      <body className={`${workSans.className} antialiased`}>
         <SessionProvider>
           <NotificationProvider>
           {children}
