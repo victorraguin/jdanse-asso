@@ -79,12 +79,12 @@ function FavEvent({ favEvent }: { favEvent: EventTypes | null }) {
   return (
     <div
       key={favEvent._id}
-      className="absolute flex flex-col shadow-md bg-clip-border hover:cursor-pointer z-40 rounded-xl w-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out bottom-0 right-[4rem] md:right-10 md:bottom-80 xl:right-20 xl:top-60 3xl:right-28 4xl:right-1/4 5xl:right-1/3">
-      <div className="relative h-36 overflow-hidden">
+      className="absolute flex flex-col shadow-md bg-clip-border hover:cursor-pointer z-40 rounded-xl w-60 min-h-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out bottom-0 right-[4rem] md:right-10 md:bottom-80 xl:right-20 xl:top-60 3xl:right-28 4xl:right-1/4 5xl:right-1/3">
+      <div className="overflow-hidden relative">
         <Image
           src={favEvent.imageUrl}
           alt={favEvent.title}
-          className="w-full object-center rounded-t-xl group-hover:scale-110 transition-transform duration-500"
+          className="w-full object-center rounded-t-xl group-hover:scale-110 transition duration-500"
           width={320}
           height={320}
         />

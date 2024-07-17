@@ -23,6 +23,7 @@ export interface EventTypes {
 }
 
 export type DanceClass = {
+  id: string;
   imageSrc: string;
   title: string;
   description: string;
@@ -32,4 +33,18 @@ export type DanceClass = {
     time: string;
     age: string;
   }[];
+  schedule?: ScheduleTypes[];
+}
+
+interface ClassInfo {
+  time: string;
+  name: string;
+  age: string;
+  id: string;
+}
+
+export interface ScheduleTypes {
+  day: string;
+  location: string;
+  classes: ClassInfo[];
 }
