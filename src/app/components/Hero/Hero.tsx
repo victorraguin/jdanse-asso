@@ -41,7 +41,7 @@ function Presentation() {
 
   return (
     <div className="items-center justify-center h-[90vh]">
-      <section className="relative flex-col text-center md:top-16 xl:top-5">
+      <section className="relative flex-col text-center top-16 md:top-16 xl:top-5 4xl:top-40">
         <div className="relative z-10 text-main space-y-10 ">
           <Image
             src="/static/Jdanse2.png"

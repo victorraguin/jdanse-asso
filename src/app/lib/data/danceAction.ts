@@ -112,7 +112,8 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       ],
     },
   ];
-  return dances;
+  const data = JSON.parse(JSON.stringify(dances));
+  return data;
 };
 
 export const getSchedule = async (): Promise<ScheduleTypes[]> => {
@@ -197,5 +198,6 @@ export const getSchedule = async (): Promise<ScheduleTypes[]> => {
       ],
     },
   ];
-  return schedule;
+  const data = JSON.parse(JSON.stringify(schedule));
+  return data;
 };

@@ -7,6 +7,7 @@ import { getDanceClasses } from "@/lib/data/danceAction";
 
 export default function ServerDanceClasses() {
   const [danceClasses, setDanceClasses] = useState<DanceClass[]>();
+  
   useEffect(() => {
     getDanceClasses().then((data) => {
       setDanceClasses(data);
