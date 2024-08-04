@@ -26,7 +26,9 @@ export type DanceClass = {
   id: string;
   imageSrc: string;
   title: string;
+  category: string;
   description: string;
+  videoSrc?: string;
   location: string;
   days: {
     day: string;

@@ -200,3 +200,19 @@ strong {
     opacity: 0;
   }
 }
+
+@keyframes haloEffect {
+  0% {
+    box-shadow: 0 0 10px 5px rgba(255, 221, 0, 0.384);
+  }
+  50% {
+    box-shadow: 0 0 10px 5px rgba(255, 223, 0, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 10px 5px rgba(255, 221, 0, 0.384);
+  }
+}
+
+.halo-effect {
+  animation: haloEffect 5s infinite;
+}

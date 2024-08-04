@@ -6,7 +6,9 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "bebedanse",
       imageSrc: "/static/bebedanse.jpg",
       title: "Bébé Danse",
-      description: "2/3 ans",
+      category: "2/3 ans",
+      description: "Découverte du mouvement dansé, de la relation à l'espace et de l'écoute musicale à travers une pédagogie basée sur des comptines, des jeux et des images.",
+      videoSrc: "/videos/bebedanse.mp4",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       days: [
         {
@@ -20,7 +22,9 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "eveil",
       imageSrc: "/static/eveil.jpg",
       title: "Éveil",
-      description: "4/5 ans",
+      category: "4/5 ans",
+      description : "Approfondissement du mouvement dansé, de la relation à l'espace et de l'écoute musicale. Introduction du travail articulaire, du corps dans sa globalité et sa partialité et de la relation à l'autre. Le cours est basé sur une pédagogie alternant comptines, jeux et images.",
+      videoSrc: "/videos/eveil.mp4",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       days: [
         {
@@ -34,7 +38,9 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "initiation",
       imageSrc: "/static/initiation.jpg",
       title: "Initiation",
-      description: "6/7 ans",
+      description :"Ce cours permet de manière progressive et ludique de préparer le corps et l'élève à une structure de cours technique afin de poursuivre à l'âge de 8 ans soit vers la danse classique soit vers la danse modern-jazz.",
+      category: "6/7 ans",
+      videoSrc: "",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       days: [
         {
@@ -48,8 +54,10 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "classique",
       imageSrc: "/static/Classique.jpg",
       title: "Classique",
-      description: "8-12 ans - Ados - Adultes",
+      category: "8-12 ans - Ados - Adultes",
+      description: "La danse française par excellence. Ce cours à pour vocation d'apprendre la rigueur et la technique des mouvements de la danse classique. Si vous arrivez à passer la première année alors vous prendrez du plaisir à danser avec fluidité, souplesse et légèreté tout en ressentant les bénéfices d'un travail dans l'allongement corporel.",
       location: "Centre Mireille Moyon, PAIMBOEUF",
+      videoSrc: "/videos/classique.mp4",
       days: [
         {
           day: "Mardi",
@@ -67,8 +75,10 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "modernjazz",
       imageSrc: "/static/ModernJazz.jpg",
       title: "Modern Jazz",
-      description: "Enfants - Pré Ados - Ados - Adultes",
+      category: "Enfants - Pré Ados - Ados - Adultes",
+      description :" La danse modern-jazz est une technique très populaire qui se danse sur tous les styles de musique. Changements rythmiques, saut, allongement des jambes, pirouettes, assouplissements sont au rendez-vous!",
       location: "Salle de la Corderie, PAIMBOEUF",
+      videoSrc: "/videos/modernjazz.mp4",
       days: [
         {
           day: "Jeudi",
@@ -101,8 +111,9 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "jdansecompagnie",
       imageSrc: "/static/jdanse compagnie.jpg",
       title: "J'Danse Compagnie",
-      description: "Groupe représentation / Concours",
+      category: "Groupe représentation / Concours",
       location: "Centre Mireille Moyon, PAIMBOEUF",
+      videoSrc: "",
       days: [
         {
           day: "Mardi",

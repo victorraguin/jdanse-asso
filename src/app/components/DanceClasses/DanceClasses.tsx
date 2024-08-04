@@ -28,7 +28,7 @@ const DanceClasses = ({ classes }: { classes: DanceClass[] }) => {
                   {course.title}
                 </h4>
                 <p className="block font-sans text-base antialiased font-medium leading-relaxed">
-                  {course.description}
+                  {course.category}
                 </p>
               </div>
             </Link>
