@@ -2,13 +2,31 @@
 import React, { useState } from "react";
 
 const Schedule = () => {
-  const [activeTab, setActiveTab] = useState("Mardi");
+  const [activeTab, setActiveTab] = useState("Lundi");
 
   const schedule = [
+    {
+      day: "Lundi",
+      location: "Salle de danse au-dessus du gymnase de Saint Brévin",
+      classes: [
+        {
+          time: "18h30 - 19h45",
+          name: "Classique",
+          age: "Ados 12-18 ans",
+          id: "classique",
+        },
+      ],
+    },
     {
       day: "Mardi",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       classes: [
+        {
+          time: "15h00 - 16h00",
+          name: "Classique",
+          age: "Seniors (+50 ans)",
+          id: "classique",
+        },
         {
           time: "17h00 - 17h45",
           name: "Bébé Danse",
@@ -33,7 +51,12 @@ const Schedule = () => {
       day: "Jeudi",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       classes: [
-        { time: "17h00 - 18h00", name: "Éveil", age: "4/5 ans", id: "eveil" },
+        { 
+          time: "17h00 - 18h00", 
+          name: "Éveil", 
+          age: "4/5 ans", 
+          id: "eveil" 
+        },
         {
           time: "18h00 - 19h00",
           name: "Initiation",
@@ -91,7 +114,7 @@ const Schedule = () => {
       <div className="flex flex-col text-main rounded-2xl py-4 my-12">
         <h1 className="text-2xl underlineTitle w-fit">Le Planning</h1>
         <div className="flex justify-center space-x-4 my-6 md:my-2">
-          {["Mardi", "Jeudi", "Vendredi"].map((day) => (
+          {["Lundi", "Mardi", "Jeudi", "Vendredi"].map((day) => (
             <button
               key={day}
               className={`px-4 py-2 rounded text-lg ${
