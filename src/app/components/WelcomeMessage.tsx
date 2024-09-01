@@ -14,18 +14,18 @@ function WelcomeMessage() {
       description: "Méthode AVIO - 2016",
     },
     {
-      icon: "/icons/formation.png",
+      icon: "/icons/degree.png",
       title: "Formée à l'enseignement de la danse classique",
       description: "Nicole GALY - 2016",
     },
     {
-      icon: "/icons/formation.png",
+      icon: "/icons/degree.png",
       title:
         'Formée "De l\'éveil corporel à la danse chez le très jeune enfant"',
       description: "Enfance et Musique - 2017",
     },
     {
-      icon: "/icons/formation.png",
+      icon: "/icons/degree.png",
       title: 'Formée à la "scénographie et composition chorégraphique"',
       description: "Le pont supérieur - 2023",
     },
@@ -73,10 +73,10 @@ function WelcomeMessage() {
               priority
               className="justify-self-center mb-5"
             />
-            <h3 className="text-secondary text-semibold text-center w-[80%] xl:w-[60%] italic">
+            <h3 className="text-main text-lg text-center w-[80%] xl:w-[60%]">
               {formation.title}
             </h3>
-            <p>{formation.description}</p>
+            <p className="text-secondary italic">{formation.description}</p>
           </div>
         ))}
       </div>

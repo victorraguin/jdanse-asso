@@ -8,7 +8,7 @@ const DanceClasses = ({ classes }: { classes: DanceClass[] }) => {
       <h1 className="text-2xl underlineTitle w-fit">
         Les cours proposés
       </h1>
-      <div className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center  my-6">
+      <div className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center  my-12">
         {classes.map((course) => (
           <div
             key={course.title}
