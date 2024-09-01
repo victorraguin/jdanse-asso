@@ -51,13 +51,13 @@ export default function Page({ params }: { params: { id: string } }) {
   if (!danceClass) return <Loading />;
 
   return (
-    <div className="flex flex-col text-main py-4 px-3 lg:px-24">
+    <div className="flex flex-col text-main py-4 px-3">
       <h1 className="text-2xl text-center text-secondary ">
         {danceClass.title} - {danceClass.category}
       </h1>
       <div
         key={danceClass.id}
-        className="relative flex flex-col text-main  my-6 mx-auto bg-clip-border min-w-[80%] sm:min-w-[50%] md:min-w-[30%] lg:w-[50%]  4xl:w-1/4 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out">
+        className="relative flex flex-col text-main  my-12 mx-auto bg-clip-border min-w-[80%] sm:min-w-[50%] md:min-w-[30%] lg:w-[50%]  4xl:w-1/4 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out">
         <div className="relative overflow-hidden rounded-xl ">
           {danceClass.videoSrc ? (
             <video
@@ -96,11 +96,11 @@ export default function Page({ params }: { params: { id: string } }) {
       <p className="text-md text-white text-center text-lg">
         {danceClass.description}
       </p>
-      <div className="flex flex-row flex-wrap my-6 items-center justify-around">
+      <div className="flex flex-row flex-wrap my-12 items-center justify-around">
         {danceClass.schedule && danceClass.schedule.length > 0 && (
           <div className="mt-6">
             <h2 className="text-xl underlineTitle w-fit">Planning de cours</h2>
-            <div className="flex flex-wrap md:flex-nowrap flex-row justify-around p-4 my-6 border border-secondary rounded-xl md:space-x-4 space-y-4 md:space-y-0">
+            <div className="flex flex-wrap md:flex-nowrap flex-row justify-around p-4 my-12 border border-secondary rounded-xl md:space-x-4 space-y-4 md:space-y-0">
               {danceClass.schedule.map((scheduleItem, index) => (
                 <div key={index}>
                   <h3 className="text-lg font-semibold mb-2 2xl:w-[90%]">
@@ -130,7 +130,7 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         )}
-        <div className="flex flex-col justify-center border h-fit border-secondary rounded-xl p-4 my-6">
+        <div className="flex flex-col justify-between border h-fit border-secondary rounded-xl p-4 my-12">
           <h2 className="text-xl underlineTitle w-fit mb-2">
             Tarification et réductions
           </h2>
@@ -157,7 +157,7 @@ export default function Page({ params }: { params: { id: string } }) {
       </div>
       <div
         id="cours"
-        className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center my-6">
+        className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center my-12">
         {danceClasses &&
           danceClasses.map((course) => {
             const isDanceClass = course.id === danceClass?.id;
@@ -172,7 +172,7 @@ export default function Page({ params }: { params: { id: string } }) {
                   const video = e.currentTarget.querySelector("video");
                   video && video.pause();
                 }}
-                className={`relative flex flex-col text-main w-full lg:w-[16%] overflow-hidden group duration-300 ease-in-out ${
+                className={`relative flex flex-col text-main w-full lg:w-[13%] overflow-hidden group duration-300 ease-in-out ${
                   isDanceClass
                     ? "opacity-100"
                     : "md:opacity-40 hover:opacity-100"

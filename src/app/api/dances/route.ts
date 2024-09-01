@@ -50,7 +50,7 @@ export async function GET() {
         {
           day: "Mardi",
           time: "19h30 - 20h45",
-          age: "Ados/Adultes",
+          age: "Adultes",
         },
         {
           day: "Jeudi",

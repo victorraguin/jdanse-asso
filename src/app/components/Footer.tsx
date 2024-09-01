@@ -8,19 +8,21 @@ const Footer = () => {
         {/* Bloc gauche */}
         <div className="mb-8 md:mb-0 w-1/4">
           <div className="flex flex-col md:flex-row justify-around items-center align-middle w-full">
-            <Image
-              src="/static/Jdanse2.png"
-              alt="Logo de l'association"
-              width={120}
-              height={120}
-              priority
-              sizes="(max-width: 768px) 100vw, 1200px"
-            />
-            <div className="flex space-x-4 mt-4">
+            <Link href="/">
+              <Image
+                src="/static/Jdanse2.png"
+                alt="Logo de l'association"
+                width={120}
+                height={120}
+                priority
+                sizes="(max-width: 768px) 100vw, 1200px"
+              /> 
+            </Link>
+            <div className="flex space-x-4 mt-4 ">
               <Link
                 href="https://www.facebook.com/p/JDanse-Asso-100069907428245"
                 target="_blank"
-                className="bg-yellow-500 h-fit border border-secondary hover:scale-105">
+                className="bg-yellow-500 h-fit hover:-translate-y-1 duration-200 ease-in-out">
                 <Image
                   src="/icons/facebook.svg"
                   alt="Logo 1"
@@ -32,7 +34,7 @@ const Footer = () => {
               <Link
                 href="tel:+33649182726"
                 target="_blank"
-                className="bg-yellow-500 p-1 rounded-full hover:scale-105">
+                className="bg-yellow-500 p-1 rounded-full hover:-translate-y-1 duration-200 ease-in-out">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"

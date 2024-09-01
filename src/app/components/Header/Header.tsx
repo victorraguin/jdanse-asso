@@ -23,13 +23,15 @@ export default function Header() {
     <header className="text-main shadow-md relative z-50 px-6 lg:px-24">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="w-[80px] h-[80px] relative z-10">
-          <Image
-            src="/static/Logo.png"
-            alt="Logo"
-            fill
-            sizes="(max-width: 768px) 100vw, 1200px"
-            className="object-contain"
-          />
+          <Link href="/">
+            <Image
+              src="/static/Logo.png"
+              alt="Logo"
+              fill
+              sizes="(max-width: 768px) 100vw, 1200px"
+              className="object-contain"
+            />  
+          </Link>
         </div>
         <button className="lg:hidden z-20" onClick={toggleMenu}>
           {isOpen ? (

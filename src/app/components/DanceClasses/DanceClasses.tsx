@@ -4,15 +4,15 @@ import Link from "next/link";
 
 const DanceClasses = ({ classes }: { classes: DanceClass[] }) => {
   return (
-    <div id="cours" className="flex flex-col text-main  py-4 px-6 lg:px-24">
+    <div id="cours" className="flex flex-col text-main  py-4 px-6">
       <h1 className="text-2xl underlineTitle w-fit">
         Les cours proposés
       </h1>
-      <div className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center  my-6">
+      <div className="flex flex-row flex-wrap justify-around gap-2 pt-2 text-center  my-12">
         {classes.map((course) => (
           <div
             key={course.title}
-            className="relative flex flex-col text-main shadow-md bg-clip-border w-full lg:w-[16%] overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out"
+            className="relative flex flex-col text-main shadow-md bg-clip-border w-full lg:w-[13%] overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out"
             onMouseEnter={(e) => {
               const video = e.currentTarget.querySelector("video");
               video && video.play();

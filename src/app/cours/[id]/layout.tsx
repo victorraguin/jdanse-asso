@@ -8,7 +8,7 @@ export default function PageLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <div className="bg-black">
       <ServerBanner />
       <ServerHeader />
       {children}

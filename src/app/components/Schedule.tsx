@@ -24,7 +24,7 @@ const Schedule = () => {
         {
           time: "15h00 - 16h00",
           name: "Classique",
-          age: "Seniors (+50 ans)",
+          age: "Adultes (+50 ans)",
           id: "classique",
         },
         {
@@ -113,7 +113,7 @@ const Schedule = () => {
     <div className="container mx-auto px-6 lg:px-24">
       <div className="flex flex-col text-main rounded-2xl py-4 my-12">
         <h1 className="text-2xl underlineTitle w-fit">Le Planning</h1>
-        <div className="flex justify-center flex-wrap space-x-4 my-6 md:my-2">
+        <div className="flex justify-center flex-wrap space-x-4 my-12 md:my-2">
           {["Lundi", "Mardi", "Jeudi", "Vendredi"].map((day) => (
             <button
               key={day}

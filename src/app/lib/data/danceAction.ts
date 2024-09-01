@@ -60,7 +60,7 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "classique",
       imageSrc: "/static/Classique.jpg",
       title: "Classique",
-      category: "8-12 ans - Ados 12-18 ans - Ados/Adultes - Seniors",
+      category: "8-12 ans - Ados 12-18 ans - Ados/Adultes - Adultes",
       description: "La danse française par excellence. Ce cours à pour vocation d'apprendre la rigueur et la technique des mouvements de la danse classique. Si vous arrivez à passer la première année alors vous prendrez du plaisir à danser avec fluidité, souplesse et légèreté tout en ressentant les bénéfices d'un travail dans l'allongement corporel.",
       location: "Centre Mireille Moyon, PAIMBOEUF et salle de danse au-dessus du gymnase de Saint Brévin",
       videoSrc: "/videos/classique.mp4",
@@ -74,7 +74,7 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
         {
           day: "Mardi",
           time: "15h00 - 16h00",
-          age: "Seniors (+50 ans)",
+          age: "Adultes (+50 ans)",
           location: "Centre Mireille Moyon, PAIMBOEUF"
         },
         {
@@ -140,12 +140,31 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       forfaits: "Cours illimités à partir de 10 ans : 550€ l'année, incluant l'adhésion et une casquette J'Danse offerte (Conditions : être inscrit dans au moins deux cours, cours illimités dans les cours ados/adultes, stages et cours J'Danse Compagnie non compris)"
     },
     {
+      id: "handidanse",
+      imageSrc: "/static/handidanse.jpg",
+      title: "Handidanse",
+      category: "Personnes handicapées",
+      description :"La danse handidanse est une technique très populaire qui se danse sur tous les styles de musique. Changements rythmiques, saut, allongement des jambes, pirouettes, assouplissements sont au rendez-vous!",
+      location: "Centre Mireille Moyon, PAIMBOEUF",
+      videoSrc: "/videos/handidanse.mp4",
+      days: [
+        {
+          day: "Mardi",
+          time: "18h30 - 19h45",
+          age: "Ados 12-18 ans",
+          id: "handidanse",
+        },
+      ],
+      tarifs: "Possibilité de créer un cours selon demande et disponibilités des salles. Tarifs à déterminer",
+
+    },
+    {
       id: "jdansecompagnie",
       imageSrc: "/static/jdanse compagnie.jpg",
       title: "J'Danse Compagnie",
       category: "Groupe représentation / Concours",
       location: "Centre Mireille Moyon, PAIMBOEUF",
-      videoSrc: "",
+      videoSrc: "/videos/jdanse-compagnie.mp4",
       days: [
         {
           day: "Mardi",
@@ -184,7 +203,7 @@ export const getSchedule = async (): Promise<ScheduleTypes[]> => {
         {
           time: "15h00 - 16h00",
           name: "Classique",
-          age: "Seniors (+50 ans)",
+          age: "Adultes (+50 ans)",
           id: "classique",
         },
         {

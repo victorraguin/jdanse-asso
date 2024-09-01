@@ -14,18 +14,18 @@ function WelcomeMessage() {
       description: "Méthode AVIO - 2016",
     },
     {
-      icon: "/icons/formation.png",
+      icon: "/icons/degree.png",
       title: "Formée à l'enseignement de la danse classique",
       description: "Nicole GALY - 2016",
     },
     {
-      icon: "/icons/formation.png",
+      icon: "/icons/degree.png",
       title:
         'Formée "De l\'éveil corporel à la danse chez le très jeune enfant"',
       description: "Enfance et Musique - 2017",
     },
     {
-      icon: "/icons/formation.png",
+      icon: "/icons/degree.png",
       title: 'Formée à la "scénographie et composition chorégraphique"',
       description: "Le pont supérieur - 2023",
     },
@@ -36,7 +36,7 @@ function WelcomeMessage() {
       <section className="md:absolute w-[90%] md:w-[85%] xl:w-full px-6 lg:px-24 md:bottom-0 xl:-bottom-40 2xl:-bottom-40 3xl:bottom-0 4xl:bottom-20 z-40 shadow-[#ffffff23] shadow-lg bg-black border-secondary border text-main flex flex-col max-w-6xl space-y-4 self-center items-center justify-center rounded-xl py-8 text-center">
         <div className="flex flex-row items-center justify-around">
           <Image
-            src="/static/JohannaBarbe.jpg"
+            src="/static/johanna.jpg"
             alt="Logo"
             width={80}
             height={80}
@@ -60,7 +60,7 @@ function WelcomeMessage() {
           - Jim Rohn
         </p>
       </section>
-      <div className="grid grids-cols-2 md:grid-cols-3 xl:grid-cols-5 md:gap-4 self-center mx-auto mt-8 md:mt-28 3xl:mt-10 pb-16 space-y-4 md:space-y-0">
+      <div className="grid grids-cols-2 md:grid-cols-3 xl:grid-cols-5 md:gap-4 self-center mx-auto mt-8 md:mt-28 xl:mt-44 2xl:mt-28 3xl:mt-10 pb-16 space-y-4 md:space-y-0">
         {formations.map((formation, index) => (
           <div
             key={index}
@@ -73,10 +73,10 @@ function WelcomeMessage() {
               priority
               className="justify-self-center mb-5"
             />
-            <h3 className="text-secondary text-semibold text-center w-[80%] xl:w-[60%] italic">
+            <h3 className="text-main text-lg text-center w-[80%] 3xl:w-[60%]">
               {formation.title}
             </h3>
-            <p>{formation.description}</p>
+            <p className="text-secondary italic">{formation.description}</p>
           </div>
         ))}
       </div>

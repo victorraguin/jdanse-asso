@@ -8,10 +8,10 @@ export default function Contact() {
         vite!
       </h3>
       <div className="flex flex-row justify-center">
-        <a href="tel:+33649182726" className="btn-primary mx-2">
+        <a href="tel:+33649182726" className="btn-primary mx-2 text-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -26,7 +26,7 @@ export default function Contact() {
         <a href="mailto:johannabarbe@free.fr" className="btn-primary mx-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-8 w-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
