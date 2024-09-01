@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const DanceClasses = ({ classes }: { classes: DanceClass[] }) => {
   return (
-    <div className="flex flex-col text-main  py-4 px-6 lg:px-24">
-      <h1 id="cours" className="text-2xl underlineTitle w-fit">
+    <div id="cours" className="flex flex-col text-main  py-4 px-6 lg:px-24">
+      <h1 className="text-2xl underlineTitle w-fit">
         Les cours proposés
       </h1>
       <div className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center  my-6">

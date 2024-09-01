@@ -15,10 +15,8 @@ export default function Header() {
 
   const menuItems = [
     { href: "/", label: "Accueil" },
-    { href: "#", label: "Cours" },
-    { href: "#", label: "Stages" },
-    { href: "#", label: "Tarifs" },
-    { href: "#", label: "Contact" },
+    { href: "#cours", label: "Cours" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (

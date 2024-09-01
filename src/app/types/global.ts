@@ -36,7 +36,10 @@ export type DanceClass = {
     age: string;
   }[];
   schedule?: ScheduleTypes[];
-}
+  tarifs: string;
+  reductions: string;
+  forfaits: string;
+};
 
 interface ClassInfo {
   time: string;

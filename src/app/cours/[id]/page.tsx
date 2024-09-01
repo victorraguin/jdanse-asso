@@ -58,23 +58,23 @@ export default function Page({ params }: { params: { id: string } }) {
       <div
         key={danceClass.id}
         className="relative flex flex-col text-main  my-6 mx-auto bg-clip-border min-w-[80%] sm:min-w-[50%] md:min-w-[30%] lg:w-[50%]  4xl:w-1/4 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out">
-        <div className="relative overflow-hidden rounded-2xl ">
+        <div className="relative overflow-hidden rounded-xl ">
           {danceClass.videoSrc ? (
             <video
               src={danceClass.videoSrc}
-              className="w-full object-cover md:rounded-2xl "
+              className="w-full object-cover md:rounded-xl "
               autoPlay
               loop
               muted
               playsInline
             />
           ) : (
-            <div className="relative h-[14rem] lg:h-[20rem] overflow-hidden rounded-2xl">
+            <div className="relative h-[14rem] lg:h-[20rem] overflow-hidden rounded-xl">
               <Image
                 src={danceClass.imageSrc}
                 alt={danceClass.title}
                 className={`
-                          w-full object-cover md:rounded-2xl group-hover:scale-110 transition duration-300 group-hover:opacity-100`}
+                          w-full object-cover md:rounded-xl group-hover:scale-110 transition duration-300 group-hover:opacity-100`}
                 fill
                 sizes="(max-width: 768px) 100vw, 1200px"
               />
@@ -93,34 +93,71 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
         )}
       </div>
-      <p className="text-md text-white text-center">{danceClass.description}</p>
-      {danceClass.schedule && danceClass.schedule.length > 0 && (
-        <div className="mt-6">
-          <h2 className="text-xl underlineTitle w-fit">Planning de cours</h2>
-          {danceClass.schedule.map((scheduleItem, index) => (
-            <div key={index} className="mt-6">
-              <h3 className="text-lg font-semibold mb-4">
-                {scheduleItem.location} -{" "}
-                <span className="text-secondary">{scheduleItem.day}</span>
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-                {scheduleItem.classes.map((classInfo, classIndex) => (
-                  <div
-                    key={classIndex}
-                    className="p-4 border-main border shadow-md rounded-lg">
-                    <h4 className="text-xl font-semibold text-main">
-                      {classInfo.time}
-                    </h4>
-                    <p className="text-md text-secondary">{classInfo.name}</p>
-                    <p className="text-sm text-white">{classInfo.age}</p>
+      <p className="text-md text-white text-center text-lg">
+        {danceClass.description}
+      </p>
+      <div className="flex flex-row flex-wrap my-6 items-center justify-around">
+        {danceClass.schedule && danceClass.schedule.length > 0 && (
+          <div className="mt-6">
+            <h2 className="text-xl underlineTitle w-fit">Planning de cours</h2>
+            <div className="flex flex-wrap md:flex-nowrap flex-row justify-around p-4 my-6 border border-secondary rounded-xl md:space-x-4 space-y-4 md:space-y-0">
+              {danceClass.schedule.map((scheduleItem, index) => (
+                <div key={index}>
+                  <h3 className="text-lg font-semibold mb-2 2xl:w-[90%]">
+                    {scheduleItem.location} -{" "}
+                    <span className="text-secondary">{scheduleItem.day}</span>
+                  </h3>
+                  <div className="grid  gap-4">
+                    {scheduleItem.classes.map((classInfo, classIndex) => (
+                      <div
+                        key={classIndex}
+                        className="hover:cursor-pointer  duration-300 ease-in-out group border border-main hover:-translate-y-1 p-4 rounded-xl mb-2 md:mb-0">
+                        <h4 className="text-xl font-semibold text-main">
+                          {classInfo.time}
+                        </h4>
+                        <p className="text-lg text-secondary">
+                          {classInfo.name}
+                        </p>
+                        <p className="text-white">{classInfo.age}</p>
+                        <button className="btn-primary text-white rounded-lg mx-auto px-4 py-2 mt-2 group-hover:bg-secondary group-hover:text-black">
+                          Réserver
+                        </button>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+        )}
+        <div className="flex flex-col justify-center border h-fit border-secondary rounded-xl p-4 my-6">
+          <h2 className="text-xl underlineTitle w-fit mb-2">
+            Tarification et réductions
+          </h2>
+          <div className="space-y-2">
+            <p className="text-md text-white">
+              {typeof danceClass.tarifs === "string"
+                ? danceClass.tarifs
+                : Object.entries(danceClass.tarifs).map(
+                    ([key, value], index) => (
+                      <span key={index}>
+                        <span className="text-secondary font-semibold text-lg">
+                          {key}
+                        </span>
+                        : {String(value)}
+                        <br />
+                      </span>
+                    )
+                  )}
+            </p>
+            <p className="text-md text-white italic">{danceClass.reductions}</p>
+            <p className="text-md text-white italic">{danceClass.forfaits}</p>
+          </div>
         </div>
-      )}
-      <div className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center my-6">
+      </div>
+      <div
+        id="cours"
+        className="flex flex-row flex-wrap justify-center gap-2 pt-2 text-center my-6">
         {danceClasses &&
           danceClasses.map((course) => {
             const isDanceClass = course.id === danceClass?.id;
@@ -136,13 +173,15 @@ export default function Page({ params }: { params: { id: string } }) {
                   video && video.pause();
                 }}
                 className={`relative flex flex-col text-main w-full lg:w-[16%] overflow-hidden group duration-300 ease-in-out ${
-                  isDanceClass ? "opacity-100" : "md:opacity-40 hover:opacity-100"
+                  isDanceClass
+                    ? "opacity-100"
+                    : "md:opacity-40 hover:opacity-100"
                 }`}>
                 <Link href={`/cours/${course.id}`}>
-                  <div className="relative h-[14rem] lg:h-[20rem] overflow-hidden rounded-2xl">
+                  <div className="relative h-[14rem] lg:h-[20rem] overflow-hidden rounded-xl">
                     <video
                       src={course.videoSrc}
-                      className="w-full object-cover md:rounded-2xl h-[14rem] lg:h-[20rem]"
+                      className="w-full object-cover md:rounded-xl h-[14rem] lg:h-[20rem]"
                       loop
                       muted
                       playsInline

@@ -19,8 +19,8 @@ export default function ServerDanceClasses() {
   }
 
   return (
-    <>
+    <div>
       <DanceClasses classes={danceClasses} />
-    </>
+    </div>
   );
 }

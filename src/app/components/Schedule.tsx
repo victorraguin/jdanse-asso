@@ -51,11 +51,11 @@ const Schedule = () => {
       day: "Jeudi",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       classes: [
-        { 
-          time: "17h00 - 18h00", 
-          name: "Éveil", 
-          age: "4/5 ans", 
-          id: "eveil" 
+        {
+          time: "17h00 - 18h00",
+          name: "Éveil",
+          age: "4/5 ans",
+          id: "eveil",
         },
         {
           time: "18h00 - 19h00",
@@ -138,12 +138,15 @@ const Schedule = () => {
                 {daySchedule.classes.map((classInfo, index) => (
                   <div
                     key={index}
-                    className="p-4 border-main border shadow-md rounded-lg">
+                    className="p-4 border-main border shadow-md rounded-lg group hover:cursor-pointer hover:-translate-y-1 duration-200 ease-in-out">
                     <h4 className="text-xl font-semibold text-main">
                       {classInfo.time}
                     </h4>
-                    <p className="text-md text-secondary">{classInfo.name}</p>
-                    <p className="text-sm text-white">{classInfo.age}</p>
+                    <p className="text-secondary">{classInfo.name}</p>
+                    <p className="text-white">{classInfo.age}</p>
+                    <button className="btn-primary text-white rounded-lg mx-auto px-4 py-2 mt-2 group-hover:bg-secondary group-hover:text-black">
+                      Réserver
+                    </button>
                   </div>
                 ))}
               </div>
