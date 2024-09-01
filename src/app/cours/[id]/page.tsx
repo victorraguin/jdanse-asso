@@ -127,21 +127,33 @@ export default function Page({ params }: { params: { id: string } }) {
             return (
               <div
                 key={course.id}
-                className="relative flex flex-col text-main shadow-md bg-clip-border w-full lg:w-[16%] overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out">
+                onMouseEnter={(e) => {
+                  const video = e.currentTarget.querySelector("video");
+                  video && video.play();
+                }}
+                onMouseLeave={(e) => {
+                  const video = e.currentTarget.querySelector("video");
+                  video && video.pause();
+                }}
+                className={`relative flex flex-col text-main w-full lg:w-[16%] overflow-hidden group duration-300 ease-in-out ${
+                  isDanceClass ? "opacity-100" : "md:opacity-40 hover:opacity-100"
+                }`}>
                 <Link href={`/cours/${course.id}`}>
                   <div className="relative h-[14rem] lg:h-[20rem] overflow-hidden rounded-2xl">
-                    <Image
-                      src={course.imageSrc}
-                      alt={course.title}
-                      className={`${isDanceClass ? "opacity-100" : "opacity-30"}
-                        w-full object-cover md:rounded-2xl group-hover:scale-110 transition duration-300 group-hover:opacity-100`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 1200px"
+                    <video
+                      src={course.videoSrc}
+                      className="w-full object-cover md:rounded-2xl h-[14rem] lg:h-[20rem]"
+                      loop
+                      muted
+                      playsInline
                     />
                   </div>
                   <div
-                    className={`p-6 text-center rounded-b-xl absolute bottom-0 bg-black/30 w-full group-hover:opacity-100 transition duration-300
-                      ${isDanceClass ? "opacity-100" : "opacity-0"}`}>
+                    className={`p-6 text-center rounded-b-xl absolute bottom-0 bg-black/30 w-full transition duration-300 ${
+                      isDanceClass
+                        ? "opacity-100"
+                        : "md:opacity-40 group-hover:opacity-100"
+                    }`}>
                     <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal">
                       {course.title}
                     </h4>

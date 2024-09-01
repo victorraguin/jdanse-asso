@@ -113,11 +113,11 @@ const Schedule = () => {
     <div className="container mx-auto px-6 lg:px-24">
       <div className="flex flex-col text-main rounded-2xl py-4 my-12">
         <h1 className="text-2xl underlineTitle w-fit">Le Planning</h1>
-        <div className="flex justify-center space-x-4 my-6 md:my-2">
+        <div className="flex justify-center flex-wrap space-x-4 my-6 md:my-2">
           {["Lundi", "Mardi", "Jeudi", "Vendredi"].map((day) => (
             <button
               key={day}
-              className={`px-4 py-2 rounded text-lg ${
+              className={`px-4 py-2 my-2 md:my-0 rounded text-lg ${
                 activeTab === day
                   ? "border border-secondary text-secondary"
                   : "border border-main text-main"
