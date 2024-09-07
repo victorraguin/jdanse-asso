@@ -1,0 +1,1 @@
+user-agent: *Allow: /Disallow: /private/Sitemap: https://j-danse.fr/sitemap.xml

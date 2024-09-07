@@ -11,7 +11,8 @@ import ServerGallery from "./components/Gallery/ServerGallery";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col mx-auto max-w-screen-3xl">
+    <main className="flex min-h-screen flex-col mx-auto max-w-screen-3xl bg-black">
+      <ServerBanner />
       <ServerHeader />
       <ServerHero />
       <WelcomeMessage />

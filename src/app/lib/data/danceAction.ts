@@ -143,7 +143,7 @@ export const getDanceClasses = async (): Promise<DanceClass[] > => {
       id: "handidanse",
       imageSrc: "/static/handidanse.jpg",
       title: "Handidanse",
-      category: "Personnes handicapées",
+      category: "Personnes en situation de handicap(s)",
       description :"La danse handidanse est une technique très populaire qui se danse sur tous les styles de musique. Changements rythmiques, saut, allongement des jambes, pirouettes, assouplissements sont au rendez-vous!",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       videoSrc: "/videos/handidanse.mp4",

@@ -60,7 +60,7 @@ function WelcomeMessage() {
           - Jim Rohn
         </p>
       </section>
-      <div className="grid grids-cols-2 md:grid-cols-3 xl:grid-cols-5 md:gap-4 self-center mx-auto mt-8 md:mt-28 xl:mt-44 2xl:mt-28 3xl:mt-10 pb-16 space-y-4 md:space-y-0">
+      <div className="grid grids-cols-2 md:grid-cols-3 xl:grid-cols-5 md:gap-4 self-center mx-auto mt-8 md:mt-28 lg:mt-44  3xl:mt-10 pb-16 space-y-4 md:space-y-0">
         {formations.map((formation, index) => (
           <div
             key={index}
