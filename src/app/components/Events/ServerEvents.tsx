@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import EventsList from "./EventList";
 import { getEvents } from "@/lib/data/eventAction";
 
+export const revalidate = 0;
 export default async function ServerEvents() {
   const events = await getEvents();
 

@@ -9,6 +9,9 @@ interface RootLayoutProps {
   children: ReactNode;
 }
 
+export const fetchCache = 'force-no-store';
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "J-Danse | Cours de Danse à Paimboeuf",
   description:

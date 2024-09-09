@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { EventTypes } from "@/types/global";
 import { formatDate } from "@/utils/date";
@@ -37,19 +37,20 @@ const EventsList = ({ events }: EventsListProps) => {
 
   return (
     <div className="flex flex-col text-main rounded-2xl py-4 my-12 px-6 lg:px-24">
-      <h1 className="text-2xl underlineTitle w-fit ">Les évènements J'Danse</h1>
+      <h1 className="text-2xl underlineTitle w-fit">Les évènements J'Danse</h1>
       <div className="flex flex-col items-center md:flex-row flex-wrap rounded-2xl mt-6">
         {eventList.length > 0 &&
           eventList.map((event) => (
             <div
               key={event._id}
               className="relative flex flex-col shadow-md bg-clip-border mx-2 rounded-xl w-60 overflow-hidden group hover:shadow-black/50 duration-300 ease-in-out">
+              {/* Lien pour accéder à l'événement */}
               <a
                 href={event.link}
                 target="_blank"
-                className="underline"
+                className=""
                 rel="noopener noreferrer">
-                <div className="relative h-36 overflow-hidden ">
+                <div className="relative h-36 overflow-hidden">
                   <Image
                     src={event.imageUrl}
                     alt={event.title}
@@ -79,25 +80,24 @@ const EventsList = ({ events }: EventsListProps) => {
                     {formatDate(event.date)}
                   </p>
                   <p>{event.location}</p>
-                  <span className="block underline text-secondary">
-                    Lien de l'évènement
-                  </span>
-                  {isAdmin && !isMainPage && (
-                    <div className="flex flex-row justify-between">
-                      <a
-                        href={`/admin/events/${event._id}/edit`}
-                        className="italic hover:underline block py-1 text-orange-600 w-fit">
-                        Modifier
-                      </a>
-                      <button
-                        className="py-1 text-orange-600 w-fit italic hover:underline block"
-                        onClick={() => handleDeleteEvent(event._id)}>
-                        Supprimer
-                      </button>
-                    </div>
-                  )}
                 </div>
               </a>
+
+              {/* Boutons d'administration en dehors du lien <a> */}
+              {isAdmin && !isMainPage && (
+                <div className="px-6 py-2 flex justify-between ">
+                  <a
+                    href={`/admin/events/${event._id}/edit`}
+                    className="italic hover:underline block py-1 text-orange-600 w-fit">
+                    Modifier
+                  </a>
+                  <button
+                    className="italic hover:underline block py-1 text-orange-600 w-fit"
+                    onClick={() => handleDeleteEvent(event._id)}>
+                    Supprimer
+                  </button>
+                </div>
+              )}
             </div>
           ))}
       </div>

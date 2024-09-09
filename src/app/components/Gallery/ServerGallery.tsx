@@ -3,6 +3,8 @@ import { Suspense } from "react";
 import ImageList from "../Gallery/ImageList";
 import { getGalleryImages } from "@/lib/data/galleryAction";
 
+export const revalidate = 0;
+
 export default async function ServerGallery() {
   const galleryImages = await getGalleryImages();
 

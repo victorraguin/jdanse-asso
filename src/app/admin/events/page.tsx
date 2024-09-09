@@ -13,10 +13,16 @@ export default function EventsPage() {
     try {
       setLoading(true);
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/events`,
-        { cache: "no-store" }
+        `/api/events`,
+        {
+          cache: "no-store",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
       );
-      const data = (await response.json()).data;
+      const data = await response.json();
       setLoading(false);
       return data;
     } catch (error) {
@@ -29,10 +35,12 @@ export default function EventsPage() {
   useEffect(() => {
     const fetchEvents = async () => {
       const events = await getEvents();
-      setEvents(events);
+      setEvents(events.data);
     };
     fetchEvents();
   }, []);
+
+  console.log(events);
 
   return (
     <AdminLayout>
