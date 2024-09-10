@@ -18,7 +18,6 @@ export interface EventTypes {
   location: string;
   link: string;
   imageUrl: string;
-  description?: string;
   isFavorite?: boolean;
 }
 

@@ -93,7 +93,7 @@ export default function Page({ params }: { params: { id: string } }) {
           </div>
         )}
       </div>
-      <p className="text-md text-white text-center text-lg">
+      <p className="text-md text-white text-center text-lg xl:max-w-6xl mx-auto">
         {danceClass.description}
       </p>
       <div className="flex flex-row flex-wrap my-12 items-center justify-around">

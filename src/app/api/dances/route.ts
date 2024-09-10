@@ -44,7 +44,7 @@ export async function GET() {
     {
       imageSrc: "/static/Classique.jpg",
       title: "Classique",
-      description: "8-12 ans - Ados - Adultes",
+      description: "Enfants 8-12 ans - Ados - Adultes",
       location: "Centre Mireille Moyon, PAIMBOEUF",
       days: [
         {
@@ -55,7 +55,7 @@ export async function GET() {
         {
           day: "Jeudi",
           time: "19h00 - 20h00",
-          age: "8-12 ans",
+          age: "Enfants 8-12 ans",
         },
       ],
     },
@@ -68,7 +68,7 @@ export async function GET() {
         {
           day: "Jeudi",
           time: "20h00 - 21h30",
-          age: "Adultes Intermédiaires",
+          age: "Adultes",
         },
         {
           day: "Vendredi",

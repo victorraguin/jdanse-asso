@@ -42,7 +42,7 @@ const Schedule = () => {
         {
           time: "19h30 - 20h45",
           name: "Classique",
-          age: "Ados/Adultes",
+          age: "Adultes",
           id: "classique",
         },
       ],
@@ -66,13 +66,13 @@ const Schedule = () => {
         {
           time: "19h00 - 20h00",
           name: "Classique",
-          age: "8-12 ans",
+          age: "Enfants 8-12 ans",
           id: "classique",
         },
         {
           time: "20h00 - 21h30",
           name: "Modern-Jazz",
-          age: "Adultes Intermédiaires",
+          age: "Adultes",
           id: "modernjazz",
         },
       ],

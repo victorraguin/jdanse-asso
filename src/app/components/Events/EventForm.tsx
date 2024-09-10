@@ -16,7 +16,6 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
   const [endTime, setEndTime] = useState(initialData?.endTime || "");
   const [location, setLocation] = useState(initialData?.location || "");
   const [link, setLink] = useState(initialData?.link || "");
-  const [description, setDescription] = useState(initialData?.description || "");
   const [isFavorite, setIsFavorite] = useState(initialData?.isFavorite || false);
   const [image, setImage] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState(initialData?.imageUrl || "");
@@ -53,7 +52,7 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
     setLoading(true);
 
     // Vérifier que tous les champs sont remplis
-    if (!title || !date || !startTime || !endTime || !location || !link || !description) {
+    if (!title || !date || !startTime || !endTime || !location || !link) {
       showNotification("error", "Veuillez remplir tous les champs");
       setLoading(false);
       return;
@@ -107,7 +106,6 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
       location, 
       link, 
       imageUrl, 
-      description, 
       isFavorite 
     };
 
@@ -185,16 +183,6 @@ export default function EventForm({ onSubmit, initialData }: EventFormProps) {
             required
             className="input"
             name="link"
-          />
-        </div>
-        <div className="flex flex-col col-span-3">
-          <label className="text-sm font-bold">Description</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder="Description de l'évènement"
-            className="input"
-            name="description"
           />
         </div>
         <div className="flex flex-col col-span-3">
