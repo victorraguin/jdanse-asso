@@ -1,50 +1,50 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import React, { useState } from "react";
-import MenuIcon from "../../../../public/icons/MenuIcon";
-import XIcon from "../../../../public/icons/XIcon";
-import Link from "next/link";
+import Image from 'next/image'
+import React, { useState } from 'react'
+import MenuIcon from '../../../../public/icons/MenuIcon'
+import XIcon from '../../../../public/icons/XIcon'
+import Link from 'next/link'
 
-export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Header () {
+  const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   const menuItems = [
-    { href: "/", label: "Accueil" },
-    { href: "#cours", label: "Cours" },
-    { href: "/#contact", label: "Contact" },
-  ];
+    { href: '/', label: 'Accueil' },
+    { href: '#cours', label: 'Cours' },
+    { href: '/#contact', label: 'Contact' }
+  ]
 
   return (
-    <header className="text-main shadow-md relative z-50 px-6 lg:px-24">
-      <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="w-[80px] h-[80px] relative z-10">
-          <Link href="/">
+    <header className='text-main shadow-md relative z-50 px-6 lg:px-24'>
+      <div className='container mx-auto flex justify-between items-center p-4'>
+        <div className='w-[80px] h-[80px] relative z-10'>
+          <Link href='/'>
             <Image
-              src="/static/Logo.png"
-              alt="Logo"
+              src='/static/logo-association-danse-paimboeuf.png'
+              alt="Logo de l'association de danse J'Danse à Paimboeuf"
               fill
-              sizes="(max-width: 768px) 100vw, 1200px"
-              className="object-contain"
-            />  
+              sizes='(max-width: 768px) 100vw, 1200px'
+              className='object-contain'
+            />
           </Link>
         </div>
-        <button className="lg:hidden z-20" onClick={toggleMenu}>
+        <button className='lg:hidden z-20' onClick={toggleMenu}>
           {isOpen ? (
-            <XIcon className="w-8 h-8 text-secondary" onClick={toggleMenu} />
+            <XIcon className='w-8 h-8 text-secondary' onClick={toggleMenu} />
           ) : (
-            <MenuIcon className="w-8 h-8 text-secondary" onClick={toggleMenu} />
+            <MenuIcon className='w-8 h-8 text-secondary' onClick={toggleMenu} />
           )}
         </button>
-        <nav className="hidden lg:flex lg:items-center lg:space-x-8">
-          <ul className="flex space-x-8 text-lg">
-            {menuItems.map((item) => (
+        <nav className='hidden lg:flex lg:items-center lg:space-x-8'>
+          <ul className='flex space-x-8 text-lg'>
+            {menuItems.map(item => (
               <li key={item.href}>
-                <Link href={item.href} className="underline">
+                <Link href={item.href} className='underline'>
                   {item.label}
                 </Link>
               </li>
@@ -53,13 +53,17 @@ export default function Header() {
         </nav>
         <nav
           className={`fixed inset-0 bg-black text-main transform z-50 ${
-            isOpen ? "translate-x-0" : "translate-x-full"
+            isOpen ? 'translate-x-0' : 'translate-x-full'
           } transition-transform duration-300 ease-in-out lg:hidden`}
         >
-          <ul className="flex flex-col items-center justify-center h-full space-y-6 text-lg">
-            {menuItems.map((item) => (
+          <ul className='flex flex-col items-center justify-center h-full space-y-6 text-lg'>
+            {menuItems.map(item => (
               <li key={item.href}>
-                <Link href={item.href} className="underline" onClick={toggleMenu}>
+                <Link
+                  href={item.href}
+                  className='underline'
+                  onClick={toggleMenu}
+                >
                   {item.label}
                 </Link>
               </li>
@@ -68,5 +72,5 @@ export default function Header() {
         </nav>
       </div>
     </header>
-  );
+  )
 }
