@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { DanceClass, ScheduleTypes } from '@/types/global'
 import Loading from '@/utils/loading'
+import { PageProps } from '../../../../.next/types/app/layout'
+import { Metadata } from 'next/types'
 
 export default function Page ({ params }: { params: { id: string } }) {
   const [danceClass, setDanceClass] = useState<DanceClass | undefined>()

@@ -1,1 +1,5 @@
-user-agent: *Allow: /Disallow: /private/Sitemap: https://j-danse.fr/sitemap.xml
+User-agent: *
+Allow: /
+Disallow: /private/
+
+Sitemap: https://j-danse.fr/sitemap.xml

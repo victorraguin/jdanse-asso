@@ -10,10 +10,6 @@ export default function CanonicalHead () {
   return (
     <Head>
       <link rel='canonical' href={`${baseUrl}${pathname}`} />
-      <meta
-        name='google-site-verification'
-        content='gugC-Amwi27wJs9CWnKa5EilOfKjAQ2pTh4N8gUD9Zw'
-      />
     </Head>
   )
 }

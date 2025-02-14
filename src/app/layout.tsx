@@ -4,7 +4,6 @@ import { NotificationProvider } from './context/NotificationContext'
 import { workSans } from './ui/fonts'
 import './globals.css'
 import { Metadata } from 'next'
-import CanonicalHead from './components/CanonicalHead'
 
 interface RootLayoutProps {
   children: ReactNode
@@ -44,7 +43,6 @@ export const metadata: Metadata = {
 export default function RootLayout ({ children }: RootLayoutProps) {
   return (
     <html lang='fr'>
-      <CanonicalHead />
       <body className={`${workSans.className} antialiased`}>
         <SessionProvider>
           <NotificationProvider>{children}</NotificationProvider>
