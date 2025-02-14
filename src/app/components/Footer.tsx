@@ -8,7 +8,7 @@ const Footer = () => {
         {/* Bloc gauche */}
         <div className='mb-8 md:mb-0 w-1/4'>
           <div className='flex flex-col md:flex-row justify-around items-center align-middle w-full'>
-            <Link href='/'>
+            <Link href='/' aria-label='Retour à l’accueil'>
               <Image
                 src='/static/Jdanse2.png'
                 alt="Logo de l'association de danse J'Danse à Paimboeuf"
@@ -36,6 +36,7 @@ const Footer = () => {
               <Link
                 href='tel:+33649182726'
                 target='_blank'
+                aria-label='Appeler le 06 49 18 27 26'
                 className='bg-yellow-500 p-1 rounded-full hover:-translate-y-1 duration-200 ease-in-out'
               >
                 <svg

@@ -132,18 +132,18 @@ const Schedule = () => {
           .filter(daySchedule => daySchedule.day === activeTab)
           .map((daySchedule, index) => (
             <div key={index}>
-              <h3 className='text-lg font-semibold mb-4'>
+              <h2 className='text-lg font-semibold mb-4'>
                 {daySchedule.location}
-              </h3>
+              </h2>
               <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4'>
                 {daySchedule.classes.map((classInfo, index) => (
                   <div
                     key={index}
                     className='p-4 border-main border shadow-md rounded-lg group hover:cursor-pointer hover:-translate-y-1 duration-200 ease-in-out'
                   >
-                    <h4 className='text-xl font-semibold text-main'>
+                    <h3 className='text-xl font-semibold text-main'>
                       {classInfo.time}
-                    </h4>
+                    </h3>
                     <p className='text-secondary'>{classInfo.name}</p>
                     <p className='text-white'>{classInfo.age}</p>
                   </div>

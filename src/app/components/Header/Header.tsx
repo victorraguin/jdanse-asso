@@ -33,7 +33,11 @@ export default function Header () {
             />
           </Link>
         </div>
-        <button className='lg:hidden z-20' onClick={toggleMenu}>
+        <button
+          className='lg:hidden z-20'
+          onClick={toggleMenu}
+          aria-label='Ouvrir le menu'
+        >
           {isOpen ? (
             <XIcon className='w-8 h-8 text-secondary' onClick={toggleMenu} />
           ) : (

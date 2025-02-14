@@ -83,9 +83,9 @@ const EventsList = ({ events }: EventsListProps) => {
                   )}
                 </div>
                 <div className='px-4 py-3 text-center flex flex-col justify-center rounded-b-xl flex-1'>
-                  <h4 className='block mb-2 font-sans text-lg font-semibold leading-snug tracking-normal'>
+                  <h2 className='block mb-2 font-sans text-lg font-semibold leading-snug tracking-normal'>
                     {event.title}
-                  </h4>
+                  </h2>
                   <p className='block font-sans text-secondary font-medium leading-relaxed'>
                     {formatDate(event.date)}
                   </p>

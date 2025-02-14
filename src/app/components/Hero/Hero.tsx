@@ -18,6 +18,8 @@ const Hero = ({ favEvent }: Props) => {
         autoPlay
         loop
         muted
+        aria-hidden='true'
+        title='Background dance video - purely decorative.'
       >
         <source src='/videos/hero-danse.mp4' type='video/mp4' />
         Your browser does not support the video tag.
